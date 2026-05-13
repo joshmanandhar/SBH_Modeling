@@ -1,0 +1,371 @@
+---
+title: "SBH_Demo"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SBH_Demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(SBHModeling)
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+library(ggplot2)
+library(patchwork)
+```
+
+# Demonstration on obtaining mortality rate estimates from SBH data & using such in SAE models...
+This vignette aims to demonstrate functions in this package using the deterministic Brass approach to take SBH data and obtain mortality rate estimates for different ages (i.e. under-1 mortality... under-5 mortality .. etc.), reconstruct mortality rate histories for a given age, and also implement the results as covariates in SAE (Small Area Estimation) models. 
+
+Specifically, we use SBH data on women aged from 15-49, with entries split into 5 year age bands (15-19, 20-24, ... , 45-49) to create a measure of mortality - q(x) - the probability that a child dies before age x. We index age bands as i = 1,2,3,4,5,6,7 for ease. We primarily consider SBH information for BOTH female and male children combined, rather than analyze by-sex information independently. If the latter was desired, methods for obtaining q(x)'s would be similar, but to reconstruct mortality rate histories for a given age via interpolation, other life-death tables would need to be imported and used, as such life tables are dependent on whether male, female, or both children are being considered. Furthermore, functions are currently written to specifically imply dataframes having entries (column names) for both sexes.   
+
+In this notebook, as an example we take information from the 2018 Malawi Population and Housing Census' fertility tables (data down to the admin-1 level) as a test case. In terms of SAE, we are generally interested in nmr though this will come up in later in the vignette. We start by looking at Malawi as a whole without admin-1 granularity to demonstrate function usage. Note that the process of cleaning the data to make it usable will depend on the structure of the raw data itself, so the first section below is not necessarily generalized to all sources...
+
+## Data Import:
+We take the data with the raw SBH information and convert it into a readable dataframe. Each district has several rows for SBH information corresponding to a specific age group. 
+
+```{r, message=FALSE, warning=FALSE}
+path <- system.file("extdata", "MalawiSBH1.xlsx", package = "SBHModeling")
+#skip 4 since these rows correspond to just ugly nested headers
+df <- read_excel(path, sheet = "Table B1", skip = 4, col_names = FALSE)
+
+#rename columns to reflect original excel names...
+colnames(df) <- c(
+  "label",           # combination of age and district label (nested structure)
+  "num_women",       # total pop of women
+  "total_both",      # total children born (both sexes)
+  "total_male",      # total male children
+  "total_female",    # total female children
+  "living_both",     # children still living (both sexes)
+  "living_male",     # children still living (male)
+  "living_female",   # children still living (female)
+  "dead_both",       # children dead (both sexes)
+  "dead_male",       # children dead (male)
+  "dead_female"      # children dead (female)
+)
+
+df <- df %>%
+  #create value for the distsrict column where it pulls from the label column only rows with no - , + 
+  mutate(region = ifelse(!grepl("-|\\+", label), label, NA)) %>%
+  #fill the district name down so every row has a corresponding district label
+  fill(region, .direction = "down") %>%
+  #remove the NA rows / only keep rows where the label is a valid age range
+  filter(grepl("-|\\+", label)) %>%
+  #reorder
+  rename(age_group = label) %>%
+  dplyr::select(region, age_group, everything())
+
+print(head(df, 12))
+```
+As we are only interested in age groups 15-19 up until 45-49, we filter out the other age groups and create an index column, i, ranging from 1:7 for each of the age groups, along with select Malawi as a whole for the region. Thus, it should be noted that after selecting the proper age groups, any given region's information should span 7 rows. 
+
+```{r}
+df <- df %>% filter(
+  age_group %in% c(
+    "15-19", "20-24", "25-29", "30-34", "35-39", "40-44", "45-49")) %>% 
+  mutate(i = case_when(
+age_group == "15-19" ~ 1,
+age_group == "20-24" ~ 2,
+age_group == "25-29" ~ 3,
+age_group == "30-34" ~ 4,
+age_group == "35-39" ~ 5,
+age_group == "40-44" ~ 6,
+age_group == "45-49" ~ 7))
+
+malawi <- df %>% filter(region == 'Malawi')
+print(malawi)
+```
+
+## Constructing q(x):
+We begin by constructing q(x) - the probability that a child dies by age x, for a given x. We outline the method briefly here:
+
+Each age band corresponds to a specific value of x - for example, the age group of 15-19 corresponds to computing q(1). Similarly:\
+15-19: i = 1, x = 1\
+20-24: i = 2, x = 2\
+25-29: i = 3, x = 3\
+30-34, i = 4, x = 5\
+35-39, i = 5, x = 10\
+40-44, i = 6, x = 15\
+45-49, i = 7, x = 20
+
+Let the average parity per woman for the specified age group i be defined as P(i) = CEB(i) / FP(i), where CEB(i) is the number of children ever born to (corresponding to total_both in our dataframe), and FP(i) be the total number of women in the age group i (corresponding to num_women in our dataframe).
+
+Then, let the fraction of children dead to mothers in the age group i be D(i), with D(i) = CD(i) / CEB(i), with CD(i) being the number of children who died to mothers in age group i (corresponding to dead_both in our dataframe).
+
+To compute q(x), we take the age group i corresponding to the x of interest and then use the formula:\
+q(x) = D(i) * {a(i) + b(i)[P(1)/P(2)] + c(i)[P(2)/P(3)]}
+
+The coefficients for a, b, and c come from Coale-Demeny life tables. These can be found in UN Manual X: Indirect Techniques for Demographic Estimation, Table 47 (Coefficients for estimation of child mortality multipliers, Trussell variant). The coefficients will change depending on the family being utilized, though for ease we have included them all in the function itself such that the user can specify which to use.
+
+The inputs of the function should then be:\
+- A dataframe specific to a region with 7 rows, one for each age group from 15-19 up until 45-49. There should be columns explicitly named: region, num_women, total_both, and dead_both. There should also be a column named i corresponding to the age groups.\
+- An integer, i, ranging from 1:7 and corresponding to the x in the q(x) being computed\
+- The family for the life tables being used ('North', 'West', 'East', 'South')\
+The reason for using a (region's) dataframe opposed to a single row for computing a single q(x) is that the equation requires computing parity for several age groups.
+
+The returns will then be the region name, the q(x), and k(x), which is essentially the multiplier of D(i) above, or in other words, the portion of the equation : {a(i) + b(i)[P(1)/P(2)] + c(i)[P(2)/P(3)]}
+
+Alternative explanations with more depth can be found in Ch. 3 of the Manual, or for a condensed explanation the paper: 'A probabilistic model for analyzing summary birth history data' by Wilson, Wakefield.
+
+As an example, we compute q(5), or U5MR, using the West family, s.t. i = 4:
+```{r}
+sbh_brass_qx(malawi, 4, 'West')
+```
+
+## Constructing t(i) / recovering the reference year:
+We now move to constructing t(i). Each calculation above of q(x) from a given age group is not necessarily based on the census year itself, but rather from a prior reference year (as keep in mind different aged women imply estimates from varying times).
+
+The framework is somewhat similar, where we use the equation:\
+t(i) = {e(i) + f(i)[P(1)/P(2)] + g(i)[P(2)/P(3)]}\
+and the final reference year can be taken by subtracting t(i) from the original census year.
+
+The e, f, and i coefficients similarly come from simulations of Coale-Demeny life tables. In this package, we use those in the same Manual X but in Table 48 (Coefficients for estimation of the reference period to which the values of q(x) estimated from data classified by age refer).
+
+The inputs for the function are about identical to the previous function, with the addition of the census year, which should be a single (4-digit) integer referring to the year that the census was executed.
+
+As an example, we compute t(5), or the reference period for U5MR, s.t. i = 4:
+```{r}
+sbh_brass_ti(malawi, 4, 'West', 2018)
+```
+
+
+## Obtaining comprehensive estimates for a region
+To obtain all q(x)s and reference years for a given region, we can simply iterate through all rows of that region's SBH information and obtain a dataframe like so:
+```{r}
+region_name <- c()
+ks <- c()
+qs <- c()
+yrs <- c()
+
+for (i in 1:7){
+  result_brassq <- sbh_brass_qx(malawi, i, 'West')
+  region_name[i] <- result_brassq$region
+  ks[i] <- result_brassq$ki
+  qs[i] <- result_brassq$qi
+  yrs[i] <- sbh_brass_ti(malawi, i, 'West', 2018)
+
+}
+
+malawi_results <- data.frame(region = region_name,
+                          q_i = qs, k_i = ks, i = 1:7, x = c(1,2,3,5,10,15,20), ref_year = yrs)
+malawi_results
+```
+
+## Reconstructing historical estimates for a given q(x)
+As seen above, we now have the means of obtaining q(x) for i = 1:7 for a given region, along with the reference year. What if instead of looking at q(x)'s corresponding to different mortality rates (i.e. under-1 mortality, under-5 mortality, etc.), we wanted to look at a single measure, i.e. U5MR, as a historical time series?
+
+We can do this through (Brass-Macrae Method) linear interpolation, by converting different q(x) measures to other q(y)s. For example, if we had a q(1) estimate and a reference year, we could convert that q(1) to q(5) to obtain the U5MR estimate for that year. The conversion is done again by utilizing Coale-Demeny tables (specific to families). Essentially, the life tables have information on 'mortality levels' and for each, the associated q(x)s. If we are interested in converting our estimated q(x) to q(y), we go down the column for the corresponding q(x) in the life table and find the value closest to our estimated value, and then find the q(y) value for that row. Generally, we use linear interpolation in practice to interpolate between the mortality levels in the tables.
+
+As defined in (Wilson, Wakefield), 
+Specifically, letting j = the level and qe(x) being the estimated q(x),\
+q_j+1(x) < q_e(x) + q_j(x)
+
+Then,
+q(y) = (1-h)q_j(y) + hq_j+1(y)\
+and h = [q_e(x) - q_j(x)]/[q_j+1(x) - q_j(x)]
+
+
+The life tables can be found in the 'Step-by-Step Guide to the Estimation of Child Mortality' manual by the UN. Specifically, we refer to Tables A.I.9. - A.I.12, 'Model values for probabilities of dying, q(x), both sexes combined (for a given family)'. Again, we encode these in the functions themselves
+
+The function then 
+
+
+
+lifedeath_levels_west <- data.frame(
+  level = 1:25,
+  e0 = c(
+    19.0, 21.4, 23.9, 26.4, 28.8,
+    31.3, 33.7, 36.2, 38.6, 41.1,
+    43.5, 46.0, 48.5, 51.0, 53.4,
+    55.8, 58.2, 60.6, 63.1, 65.5,
+    68.0, 70.5, 73.1, 75.7, 78.3
+  ),
+  q1 = c(
+    .39278, .35913, .32882, .30128, .27608,
+    .25289, .23143, .21151, .19292, .17553,
+    .15920, .14383, .12912, .11524, .10259,
+    .09037, .07862, .06734, .05656, .04628,
+    .03604, .02678, .01838, .01118, .00581
+  ),
+  q2 = c(
+    .47403, .43699, .40291, .37136, .34202,
+    .31459, .28888, .26469, .24187, .22027,
+    .19980, .18036, .16099, .14247, .12579,
+    .10972, .09415, .07941, .06547, .05229,
+    .03979, .02908, .01960, .01173, .00594
+  ),
+  q3 = c(
+    .51004, .47149, .43575, .40242, .37123,
+    .34193, .31433, .28825, .26354, .24010,
+    .21780, .19654, .17511, .15453, .13611,
+    .11843, .10138, .08521, .06989, .05537,
+    .04178, .03033, .02030, .01204, .00611
+  ),
+  q5 = c(
+    .55103, .51077, .47312, .43777, .40449,
+    .37306, .34330, .31507, .28823, .26267,
+    .23827, .21496, .19119, .16826, .14795,
+    .12854, .11001, .09233, .07545, .05934,
+    .04440, .03202, .02124, .01248, .00627
+  ),
+  q10 = c(
+    .58262, .54211, .50388, .46771, .43339,
+    .40077, .36969, .34005, .31171, .28459,
+    .25861, .23368, .20814, .18342, .16141,
+    .14033, .12015, .10083, .08236, .06469,
+    .04830, .03475, .02297, .01342, .00669
+  ),
+  q15 = c(
+    .60468, .56415, .52565, .48900, .45406,
+    .42068, .38875, .35815, .32881, .30062,
+    .27353, .24744, .22061, .19460, .17142,
+    .14914, .12778, .10729, .08765, .06883,
+    .05143, .03698, .02442, .01425, .00708
+  ),
+  q20 = c(
+    .63218, .59182, .55318, .51613, .48057,
+    .44640, .41354, .38189, .35139, .32198,
+    .29358, .26614, .23796, .21061, .18593,
+    .16214, .13924, .11721, .09604, .07571,
+    .05675, .04093, .02711, .01587, .00793
+  )
+)
+
+lifedeath_levels_north <- data.frame(
+  level = 1:25,
+  e0 = c(
+    18.8, 21.2, 23.6, 26.1, 28.6,
+    31.0, 33.5, 36.0, 38.4, 40.9,
+    43.4, 45.9, 48.3, 50.8, 53.2,
+    55.7, 58.1, 60.6, 63.1, 65.7,
+    68.2, 70.7, 73.3, 75.9, 78.6
+  ),
+  q1 = c(
+    .34608, .31620, .28938, .26509, .24292,
+    .22256, .20377, .18635, .17012, .15496,
+    .14076, .12744, .11503, .10386, .09300,
+    .08249, .07235, .06262, .05331, .04445,
+    .03602, .02806, .02094, .01417, .00922
+  ),
+  q2 = c(
+    .42815, .39420, .36313, .33451, .30800,
+    .28333, .26026, .23863, .21829, .19909,
+    .18095, .16379, .14701, .13158, .11670,
+    .10215, .08837, .07540, .06317, .05167,
+    .04086, .03067, .02247, .01493, .00958
+  ),
+  q3 = c(
+    .47836, .44191, .40825, .37698, .34782,
+    .32050, .29482, .27062, .24775, .22609,
+    .20553, .18602, .16657, .14861, .13139,
+    .11473, .09899, .08414, .07015, .05696,
+    .04451, .03271, .02369, .01557, .00963
+  ),
+  q5 = c(
+    .54455, .50481, .46772, .43297, .40030,
+    .36949, .34037, .31277, .28658, .26166,
+    .23793, .21533, .19235, .17113, .15096,
+    .13182, .11367, .09645, .08012, .06462,
+    .04989, .03575, .02555, .01655, .01037
+  ),
+  q10 = c(
+    .60282, .56241, .52408, .48765, .45296,
+    .41987, .38826, .35802, .32904, .30127,
+    .27459, .24902, .22271, .19815, .17474,
+    .15248, .13131, .11120, .09208, .07388,
+    .05653, .03985, .02820, .01804, .01115
+  ),
+  q15 = c(
+    .62896, .58864, .55011, .51323, .47790,
+    .44400, .41144, .38016, .35005, .32106,
+    .29313, .26625, .23862, .21264, .18779,
+    .16407, .14147, .11991, .09938, .07980,
+    .06110, .04309, .03041, .01939, .01195
+  ),
+  q20 = c(
+    .65402, .61407, .57561, .53856, .50284,
+    .46841, .43517, .40308, .37207, .34209,
+    .31311, .28513, .25654, .22941, .20332,
+    .17831, .15436, .13145, .10953, .08858,
+    .06851, .04912, .03476, .02242, .01399
+  )
+)
+
+
+```{r}
+sbh_interpolation_row <- function(qxe_result, x, lifedeath_table, y){
+  qx_col <- paste0('q', x)
+  qy_col <- paste0('q', y)
+  
+  #pull relevant columns for interpolation from life death table
+  qx_vals <- lifedeath_table[[qx_col]]
+  qy_vals <- lifedeath_table[[qy_col]]
+  
+  #reverse orders as linear interpolation needs increasing x
+  ord <- order(qx_vals)
+  qx_vals <- qx_vals[ord]
+  qy_vals <- qy_vals[ord]
+  
+  qy_est <- approx(
+    x = qx_vals,
+    y = qy_vals,
+    out = qxe_result,
+    rule = 2
+  )$y
+  
+  return(qy_est)
+}
+
+sbh_interpolation_complete <- function(sbh_result_table, lifedeath_table, y_des) {
+  sbh_result_table %>% rowwise() %>% mutate(
+    paste('q', y, '_mr') = sbh_interpolation_row(
+      qxe_result = q_i,
+      x  = x,
+      lifedeath_table = lifedeath_table,
+      y = y_des
+    )
+  )
+}
+```
+
+
+```{r}
+row_u5mr_interpolation <- function(q_SBH_result, x, lifedeath_table){
+  #make column name match
+  qx_col <- paste0('q',x)
+  qx_vals <- lifedeath_table[[qx_col]] #pull col of relevant q's for x
+  q5_vals <- lifedeath_table[['q5']]
+  
+  #reverse orders for ease
+  ord <- order(qx_vals)
+  qx_vals <- qx_vals[ord]
+  q5_vals <- q5_vals[ord]
+  
+  q5_est <- approx(
+    x = qx_vals,
+    y = q5_vals,
+    xout = q_SBH_result,
+    rule = 2
+  )$y
+  
+  return(q5_est)
+}
+
+complete_u5mr_interpolation <- function(SBH_result_table, lifedeath_table) {
+  SBH_result_table %>% rowwise() %>% mutate(
+    u5mr = row_u5mr_interpolation(
+      q_SBH_result = q_i,
+      x = x,
+      lifedeath_table = lifedeath_table)) %>% ungroup()
+}
+```
