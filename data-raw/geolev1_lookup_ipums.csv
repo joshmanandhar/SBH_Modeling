@@ -1,0 +1,1897 @@
+Country,Label,Geolev1
+Argentina,City of Buenos Aires,32002
+Argentina,Buenos Aires province,32006
+Argentina,Catamarca,32010
+Argentina,Córdoba,32014
+Argentina,Corrientes,32018
+Argentina,Chaco,32022
+Argentina,Chubut,32026
+Argentina,Entre Rios,32030
+Argentina,Formosa,32034
+Argentina,Jujuy,32038
+Argentina,La Pampa,32042
+Argentina,La Rioja,32046
+Argentina,Mendoza,32050
+Argentina,Misiones,32054
+Argentina,Neuquén,32058
+Argentina,Río Negro,32062
+Argentina,Salta,32066
+Argentina,San Juan,32070
+Argentina,San Luis,32074
+Argentina,Santa Cruz,32078
+Argentina,Santa Fe,32082
+Argentina,Santiago del Estero,32086
+Argentina,Tucumán,32090
+Argentina,Tierra del Fuego,32094
+Argentina,Unknown,32099
+Austria,Burgenland,40011
+Austria,Niederösterreich,40012
+Austria,Wien,40013
+Austria,Kärnten,40021
+Austria,Steiermark,40022
+Austria,Oberösterreich,40031
+Austria,Salzburg,40032
+Austria,Tirol,40033
+Austria,Vorarlberg,40034
+Bangladesh,Barisal,50010
+Bangladesh,Chittagong,50020
+Bangladesh,Dhaka,50030
+Bangladesh,Khulna,50040
+Bangladesh,"Rajshahi, Rangpur",50050
+Bangladesh,Sylhet,50060
+Armenia,Yerevan,51901
+Armenia,Aragatsotn,51902
+Armenia,Ararat,51903
+Armenia,Armavir,51904
+Armenia,Gegharkunik,51905
+Armenia,Lori,51906
+Armenia,Kotayk,51907
+Armenia,Shirak,51908
+Armenia,Syunik,51909
+Armenia,Vayots Dzor,51910
+Armenia,Tavush,51911
+Bolivia,Chuquisaca,68001
+Bolivia,La Paz,68002
+Bolivia,Cochabamba,68003
+Bolivia,Oruro,68004
+Bolivia,Potosí,68005
+Bolivia,Tarija,68006
+Bolivia,Santa Cruz,68007
+Bolivia,Beni,68008
+Bolivia,Pando,68009
+Bolivia,Lake Titicaca,68088
+Botswana,Gaborone,72001
+Botswana,Francistown,72002
+Botswana,Lobatse,72003
+Botswana,Selebi Phikwe,72004
+Botswana,"Central Tutume, Sowa",72007
+Botswana,"Ngwaketse, Ngwaketse West, Ngwaketse Southern, Southern, Jwaneng",72010
+Botswana,Borolong,72011
+Botswana,South East,72020
+Botswana,"Kweneng, Kweneng South, Kweneng North",72030
+Botswana,Kgatleng,72040
+Botswana,Central Serowe/Palapye,72050
+Botswana,Central Mahalapye,72051
+Botswana,Central Bobonong,72052
+Botswana,"Central Boteti, Orapa",72053
+Botswana,North East,72060
+Botswana,Ngamiland East,72070
+Botswana,"Ngamiland West, Delta",72071
+Botswana,Chobe,72072
+Botswana,"Ghanzi, Central Kgalagadi Game Reserve (CKGR)",72080
+Botswana,Tshabong (Kgalagadi South),72090
+Botswana,Hukunsti (Kgalagadi North),72091
+Brazil,Rondonia,76011
+Brazil,Acre,76012
+Brazil,Amazonas,76013
+Brazil,Roraima,76014
+Brazil,Pará,76015
+Brazil,Amapá,76016
+Brazil,Maranhão,76021
+Brazil,Piauí,76022
+Brazil,Ceará,76023
+Brazil,Rio Grande do Norte,76024
+Brazil,Paraíba,76025
+Brazil,"Pernambuco, Arquipelago de Fernando de Noronha",76026
+Brazil,Alagoas,76027
+Brazil,Sergipe,76028
+Brazil,Bahia,76029
+Brazil,Minas Gerais,76031
+Brazil,Espírito Santo,76032
+Brazil,"Rio de Janeiro, Guanabara",76033
+Brazil,São Paulo,76035
+Brazil,Paraná,76041
+Brazil,Santa Catarina,76042
+Brazil,Rio Grande do Sul,76043
+Brazil,"Mato Grosso do Sul, Mato Grosso",76051
+Brazil,"Goiás, Tocantins",76052
+Brazil,Distrito Federal,76053
+Myanmar,Kachin,104001
+Myanmar,Kayah,104002
+Myanmar,Kayin,104003
+Myanmar,Chin,104004
+Myanmar,Sagaing,104005
+Myanmar,Tanintharyi,104006
+Myanmar,Bago,104007
+Myanmar,Magway,104008
+Myanmar,Mandalay,104009
+Myanmar,Mon,104010
+Myanmar,Rakhine,104011
+Myanmar,Yangon,104012
+Myanmar,Shan,104013
+Myanmar,Ayeyawady,104014
+Myanmar,Nay Pyi Taw,104015
+Belarus,Brest,112001
+Belarus,Vitebsk,112002
+Belarus,Gomel,112003
+Belarus,Grodno,112004
+Belarus,"Minsk, Minsk City",112006
+Belarus,Mogilev,112007
+Cambodia,Banteay Meanchey,116001
+Cambodia,Battambang,116002
+Cambodia,"Kampong Cham, Tbong Khmum",116003
+Cambodia,Kampong Chhnang,116004
+Cambodia,Kampong Speu,116005
+Cambodia,Kampong Thom,116006
+Cambodia,Kampot,116007
+Cambodia,"Phnom Penh, Kandal",116008
+Cambodia,"Koh Kong, Preah Sihanouk",116009
+Cambodia,Kratie,116010
+Cambodia,Mondul Kiri,116011
+Cambodia,Preah Vihear,116013
+Cambodia,Prey Veng,116014
+Cambodia,Pursat,116015
+Cambodia,Ratanak Kiri,116016
+Cambodia,"Siem Reap, Otdar Meanchey",116017
+Cambodia,Stung Treng,116019
+Cambodia,Svay Rieng,116020
+Cambodia,Takeo,116021
+Cambodia,Kep,116023
+Cambodia,Pailin,116024
+Cambodia,Tonle Sap Lake,116088
+Cambodia,Areas Under Government Administration,116099
+Cameroon,"Centre, Sud",120002
+Cameroon,Est,120003
+Cameroon,"Nord, Adamoua, Extrème Nord",120004
+Cameroon,Littoral,120005
+Cameroon,Nord Ouest,120007
+Cameroon,Ouest,120008
+Cameroon,Sud Ouest,120010
+Canada,Newfoundland and Labrador,124010
+Canada,"Prince Edward Island, Yukon Territory, Northwest Territories, Nunavut",124011
+Canada,Nova Scotia,124012
+Canada,New Brunswick,124013
+Canada,Quebec,124024
+Canada,Ontario,124035
+Canada,Manitoba,124046
+Canada,Saskatchewan,124047
+Canada,Alberta,124048
+Canada,British Columbia,124059
+Chile,"Iquique, Tamarugal",152014
+Chile,Antofagasta,152021
+Chile,El Loa,152022
+Chile,Tocopilla,152023
+Chile,Copiapó,152031
+Chile,Chañaral,152032
+Chile,Huasco,152033
+Chile,Elqui,152041
+Chile,Choapa,152042
+Chile,Limarí,152043
+Chile,"Valparaíso, Quillota, Marga Marga, Isla de Pascua",152051
+Chile,Los Andes,152053
+Chile,Petorca,152054
+Chile,San Antonio,152056
+Chile,San Felipe de Aconcagua,152057
+Chile,Cachapoal,152061
+Chile,Cardenal Caro,152062
+Chile,Colchagua,152063
+Chile,Talca,152071
+Chile,Cauquenes,152072
+Chile,Curicó,152073
+Chile,Linares,152074
+Chile,Concepcion,152081
+Chile,Arauco,152082
+Chile,Biobío,152083
+Chile,Cautin,152091
+Chile,Malleco,152092
+Chile,Llanquihue,152101
+Chile,"Chiloe, Palena",152102
+Chile,Osorno,152103
+Chile,Coihaique,152111
+Chile,"Aisén, General Carrera, Capitan Prat",152112
+Chile,"Magallanes, Tierra del Fuego, Antártica Chilena",152121
+Chile,Última Esperanza,152124
+Chile,Santiago,152131
+Chile,Cordillera,152132
+Chile,Chacabuco,152133
+Chile,Maipo,152134
+Chile,Melipilla,152135
+Chile,Talagante,152136
+Chile,"Valdivia, Ranco",152141
+Chile,"Arica, Parinacota",152151
+Chile,"Diguillín, Itata, Punilla",152163
+Chile,Waterbodies,152888
+China,Beijing,156011
+China,Tianjin,156012
+China,Hebei,156013
+China,Shanxi,156014
+China,Inner Mongolia,156015
+China,Liaoning,156021
+China,Jilin,156022
+China,Heilongjiang,156023
+China,Shanghai,156031
+China,Jiangsu,156032
+China,Zhejiang,156033
+China,Anhui,156034
+China,Fujian,156035
+China,Jiangxi,156036
+China,Shandong,156037
+China,Henan,156041
+China,Hubei,156042
+China,Hunan,156043
+China,"Guangdong, Hainan",156044
+China,Guangxi,156045
+China,"Sichuan, Chongqing",156051
+China,Guizhou,156052
+China,Yunnan,156053
+China,Tibet,156054
+China,Shaanxi,156061
+China,Gansu,156062
+China,Qinghai,156063
+China,Ningxia,156064
+China,Xinjiang,156065
+China,Disputed islands,156099
+Colombia,Antioquia,170005
+Colombia,Atlántico,170008
+Colombia,"Bogotá D.C., Cundinamarca",170011
+Colombia,"Bolívar, Sucre",170013
+Colombia,"Boyacá, Casanare",170015
+Colombia,Caquetá,170018
+Colombia,Cauca,170019
+Colombia,Córdoba,170023
+Colombia,Chocó,170027
+Colombia,Huila,170041
+Colombia,La Guajira,170044
+Colombia,Meta,170050
+Colombia,Nariño,170052
+Colombia,"Cesar, Norte De Santander, Magdalena",170054
+Colombia,"Caldas, Quindío, Risaralda",170066
+Colombia,Santander,170068
+Colombia,Tolima,170073
+Colombia,Valle Del Cauca,170076
+Colombia,Arauca,170081
+Colombia,Putumayo,170086
+Colombia,Archipiélago De San Andrés Y Providencia,170088
+Colombia,"Amazonas, Guaviare, Vaupés, Vichada, Guainía",170095
+Costa Rica,San José,188001
+Costa Rica,Alajuela,188002
+Costa Rica,Cartago,188003
+Costa Rica,Heredia,188004
+Costa Rica,Guanacaste,188005
+Costa Rica,Puntarenas,188006
+Costa Rica,Limón,188007
+Cuba,"Pinar del Río, Artemisa, Mayabeque",192021
+Cuba,La Habana,192023
+Cuba,Matanzas,192025
+Cuba,Villa Clara,192026
+Cuba,Cienfuegos,192027
+Cuba,Sancti Spíritus,192028
+Cuba,Ciego de Ávila,192029
+Cuba,Camagüey,192030
+Cuba,Las Tunas,192031
+Cuba,Holguín,192032
+Cuba,Granma,192033
+Cuba,Santiago de Cuba,192034
+Cuba,Guantánamo,192035
+Cuba,Isla de la Juventud,192040
+Benin,Alibori,204001
+Benin,Atacora,204002
+Benin,Atlantique,204003
+Benin,Borgou,204004
+Benin,Collines,204005
+Benin,Couffo,204006
+Benin,Donga,204007
+Benin,Littoral,204008
+Benin,Mono,204009
+Benin,Oueme,204010
+Benin,Plateau,204011
+Benin,Zou,204012
+Dominican Republic,"Distrito Nacional, Santo Domingo",214001
+Dominican Republic,Azua,214002
+Dominican Republic,"Baoruco, Barahona, Independencia",214003
+Dominican Republic,Dajabón,214005
+Dominican Republic,Duarte,214006
+Dominican Republic,Elías Piña,214007
+Dominican Republic,"El Seibo, Hato Mayor",214008
+Dominican Republic,Espaillat,214009
+Dominican Republic,"La Altagracia, La Romana",214011
+Dominican Republic,"Monseigneur Nouel, La Vega",214013
+Dominican Republic,María Trinidad Sánchez,214014
+Dominican Republic,Monte Cristi,214015
+Dominican Republic,Pedernales,214016
+Dominican Republic,"San José de Ocoa, Peravia",214017
+Dominican Republic,"Puerto Plata, Santiago",214018
+Dominican Republic,Hermanas Mirabal,214019
+Dominican Republic,Samaná,214020
+Dominican Republic,"San Cristóbal, Monte Plata",214021
+Dominican Republic,San Juan,214022
+Dominican Republic,San Pedro De Macorís,214023
+Dominican Republic,Sánchez Ramírez,214024
+Dominican Republic,Santiago Rodríguez,214026
+Dominican Republic,Valverde,214027
+Dominican Republic,Lake Enriquilla,214088
+Ecuador,Azuay,218001
+Ecuador,Bolívar,218002
+Ecuador,Carchi,218004
+Ecuador,Cotopaxi,218005
+Ecuador,Chimborazo,218006
+Ecuador,El Oro,218007
+Ecuador,"Cañar, Esmeraldas, Guayas, Manabí, Manga del Cura [Disputed canton], Pichincha, El Piedrero [Disputed canton], Los Ríos, Santa Elena, Santo Domingo de las Tsáchilas, Galápagos",218009
+Ecuador,"Imbabura, Las Golondrinas [Disputed canton]",218010
+Ecuador,Loja,218011
+Ecuador,Morona Santiago,218014
+Ecuador,Pastaza,218016
+Ecuador,Tungurahua,218018
+Ecuador,Zamora Chinchipe,218019
+Ecuador,"Napo, Orellana, Sucumbíos",218021
+Ecuador,Unknown,218099
+El Salvador,Ahuachapán,222001
+El Salvador,Santa Ana,222002
+El Salvador,Sonsonate,222003
+El Salvador,Chalatenango,222004
+El Salvador,La Libertad,222005
+El Salvador,San Salvador,222006
+El Salvador,Cuscatlán,222007
+El Salvador,La Paz,222008
+El Salvador,Cabañas,222009
+El Salvador,San Vicente,222010
+El Salvador,Usulután,222011
+El Salvador,San Miguel,222012
+El Salvador,Morazán,222013
+El Salvador,La Unión,222014
+Ethiopia,Tigray,231001
+Ethiopia,Affar,231002
+Ethiopia,Amhara,231003
+Ethiopia,"Oromia, Somali",231004
+Ethiopia,Benishangul-Gumuz,231006
+Ethiopia,"Southern Nations, Nationalities, and Peoples (SNNP)",231007
+Ethiopia,Gambela,231012
+Ethiopia,Harari,231013
+Ethiopia,Addis Ababa,231014
+Ethiopia,Dire Dawa,231015
+Ethiopia,Special Region,231017
+Ethiopia,Waterbodies,231088
+Argentina,Falkland Islands,238094
+Argentina,South Georgia and South Sandwich Islands,239094
+Fiji,Central,242001
+Fiji,Eastern,242002
+Fiji,Northern,242003
+Fiji,Western,242004
+Fiji,In ships,242098
+Fiji,Unknown,242999
+France,Guadeloupe,250001
+France,Martinique,250002
+France,French Guyana,250003
+France,Réunion Island,250004
+France,Île-de-France,250011
+France,Champagne-Ardenne,250021
+France,Picardy,250022
+France,Upper Normandy,250023
+France,Centre,250024
+France,Lower Normandy,250025
+France,Burgundy,250026
+France,North Pas-de-Calais,250031
+France,Lorraine,250041
+France,Alsace,250042
+France,Franche-Comté,250043
+France,Loire Valley,250052
+France,Brittany,250053
+France,Poitou-Charentes,250054
+France,Aquitaine,250072
+France,Midi-Pyrénées,250073
+France,Limousin,250074
+France,Rhône-Alpes,250082
+France,Auvergne,250083
+France,Languedoc-Roussillon,250091
+France,Provence-Alpes-Riviera,250093
+France,Corsica,250094
+France,Unknown,250999
+Palestine,Jenin,275001
+Palestine,Tubas and Northern Valley,275005
+Palestine,Tulkarm,275010
+Palestine,Nablus,275015
+Palestine,Qalqilia,275020
+Palestine,Salfit,275025
+Palestine,Ramallah and Al-Bireh,275030
+Palestine,Ariha and Al Aghwar (Jericho),275035
+Palestine,Jerusalem,275040
+Palestine,Bethlehem,275045
+Palestine,Hebron,275050
+Palestine,North Gaza,275055
+Palestine,Gaza,275060
+Palestine,Deir Al-Balah,275065
+Palestine,Khan Yunis,275070
+Palestine,Rafah,275075
+Palestine,Waterbody,275088
+Palestine,No Man's Land-Israel/West Bank,275099
+Germany,Schleswig-Holstein,276001
+Germany,Hamburg,276002
+Germany,Niedersachsen,276003
+Germany,Bremen,276004
+Germany,Nordrhein-Westfalen,276005
+Germany,Hessen,276006
+Germany,Rheinland-Pfalz,276007
+Germany,Baden-Württemberg,276008
+Germany,Bayern,276009
+Germany,Saarland,276010
+Germany,West Berlin,276011
+Germany,Brandenburg,276012
+Germany,Mecklenburg-West Pomerania,276013
+Germany,Saxony,276014
+Germany,Saxony-Anhalt,276015
+Germany,Thuringia,276016
+Germany,East Berlin,276017
+Ghana,Western,288001
+Ghana,Central,288002
+Ghana,Greater Accra,288003
+Ghana,Volta,288004
+Ghana,Eastern,288005
+Ghana,Ashanti,288006
+Ghana,Brong Ahafo,288007
+Ghana,Northern,288008
+Ghana,Upper East,288009
+Ghana,Upper West,288010
+Greece,Etolia and Akarnania,300001
+Greece,Viotia,300003
+Greece,Evia,300004
+Greece,Evrytania,300005
+Greece,Fthiotida,300006
+Greece,Fokida,300007
+Greece,Argolida,300011
+Greece,Arkadia,300012
+Greece,Achaia,300013
+Greece,Ilia,300014
+Greece,Korinthia,300015
+Greece,Lakonia,300016
+Greece,Messinia,300017
+Greece,Zakynthos,300021
+Greece,Kerkyra,300022
+Greece,Kefallinia,300023
+Greece,Lefkada,300024
+Greece,Arta,300031
+Greece,Thesprotia,300032
+Greece,Ioannina,300033
+Greece,Preveza,300034
+Greece,Karditsa,300041
+Greece,Larissa,300042
+Greece,Magnissia,300043
+Greece,Trikala,300044
+Greece,Grevena,300051
+Greece,Drama,300052
+Greece,Imathia,300053
+Greece,Thessaloniki,300054
+Greece,Kavala,300055
+Greece,Kastoria,300056
+Greece,Kilkis,300057
+Greece,Kozani,300058
+Greece,Pella,300059
+Greece,Pieria,300061
+Greece,Serres,300062
+Greece,Florina,300063
+Greece,Chalkidiki and Agion Oros,300064
+Greece,Evros,300071
+Greece,Xanthi,300072
+Greece,Rodopi,300073
+Greece,Dodekanissos,300081
+Greece,Kyklades,300082
+Greece,Lesvos,300083
+Greece,Samos,300084
+Greece,Chios,300085
+Greece,Iraklio,300091
+Greece,Lassithi,300092
+Greece,Rethymno,300093
+Greece,Chania,300094
+Greece,Prefecture of Athens,300101
+Greece,Prefecture of East Attiki,300102
+Greece,Prefecture of West Attiki,300103
+Greece,Prefecture of Pireas,300104
+Guatemala,Guatemala,320001
+Guatemala,El Progreso,320002
+Guatemala,Sacatepéquez,320003
+Guatemala,Chimaltenango,320004
+Guatemala,Escuintla,320005
+Guatemala,Santa Rosa,320006
+Guatemala,Sololá,320007
+Guatemala,Totonicapán,320008
+Guatemala,Quetzaltenango,320009
+Guatemala,Suchitepéquez,320010
+Guatemala,Retalhuleu,320011
+Guatemala,San Marcos,320012
+Guatemala,Huehuetenango,320013
+Guatemala,Quiché,320014
+Guatemala,Baja Verapaz,320015
+Guatemala,Alta Verapaz,320016
+Guatemala,Petén,320017
+Guatemala,Izabal,320018
+Guatemala,Zacapa,320019
+Guatemala,Chiquimula,320020
+Guatemala,Jalapa,320021
+Guatemala,Jutiapa,320022
+Guatemala,Waterbodies,320088
+Guinea,Boffa,324011
+Guinea,Boke,324012
+Guinea,Fria,324013
+Guinea,Gaoual,324014
+Guinea,Koundara,324015
+Guinea,Conakry,324021
+Guinea,Dabola,324031
+Guinea,Dinguiraye,324032
+Guinea,Faranah,324033
+Guinea,Kissidougou,324034
+Guinea,Kankan,324041
+Guinea,Kerouane,324042
+Guinea,Kouroussa,324043
+Guinea,Mandiana,324044
+Guinea,Siguiri,324045
+Guinea,"Cyah, Dubreka",324051
+Guinea,Forecariah,324053
+Guinea,Kindia,324054
+Guinea,Telimele,324055
+Guinea,Koubia,324061
+Guinea,Labe,324062
+Guinea,Lelouma,324063
+Guinea,Mali,324064
+Guinea,Tougue,324065
+Guinea,Dalaba,324071
+Guinea,Mamou,324072
+Guinea,Pita,324073
+Guinea,Beyla,324081
+Guinea,Gueckedou,324082
+Guinea,Lola,324083
+Guinea,Macenta,324084
+Guinea,Nzerekore,324085
+Guinea,Yomou,324086
+Haiti,Nord (North) and Nord'est (North East),332003
+Haiti,"Centre (Central), L'Artibonite, Ouest (West), Sud'Est (South East)",332006
+Haiti,"Grand'Anse, Nippes, Sud (South)",332007
+Haiti,Nord'Ouest (North West),332009
+Honduras,Atlántida,340001
+Honduras,Colón,340002
+Honduras,Comayagua,340003
+Honduras,Copán,340004
+Honduras,Cortes,340005
+Honduras,Choluteca,340006
+Honduras,El Paraíso,340007
+Honduras,Francisco Morazán,340008
+Honduras,Gracias a Dios,340009
+Honduras,Intibucá,340010
+Honduras,Islas de la Bahía,340011
+Honduras,La Paz,340012
+Honduras,Lempira,340013
+Honduras,Ocotepeque,340014
+Honduras,Olancho,340015
+Honduras,Santa Bárbara,340016
+Honduras,Valle,340017
+Honduras,Yoro,340018
+Honduras,Unknown,340099
+India,Jammu and Kashmir,356001
+India,Himachal Pradesh,356002
+India,Punjab,356003
+India,Chandigarh,356004
+India,Haryana,356006
+India,Delhi,356007
+India,Rajasthan,356008
+India,"Uttar Pradesh, Uttaranchal",356009
+India,"Bihar, Jharkhand",356010
+India,Sikkim,356011
+India,Arunachal Pradesh,356012
+India,Nagaland,356013
+India,Manipur,356014
+India,Mizoram,356015
+India,Tripura,356016
+India,Meghalaya,356017
+India,Assam,356018
+India,West Bengal,356019
+India,Orissa,356021
+India,"Madhya Pradesh, Chhattisgarh",356023
+India,Gujarat,356024
+India,Dadra and Nagar Haveli,356026
+India,Maharashtra,356027
+India,Andhra Pradesh,356028
+India,Karnataka,356029
+India,"Goa, Daman and Diu",356030
+India,Lakshadweep,356031
+India,Kerala,356032
+India,Tamil Nadu,356033
+India,Pondicherry,356034
+India,Andman and Nicobar Islands,356035
+Indonesia,Nanggroe Aceh Darussalam,360011
+Indonesia,Sumatera Utara,360012
+Indonesia,Sumatera Barat,360013
+Indonesia,"Kepulauan Riau, Riau",360014
+Indonesia,Jambi,360015
+Indonesia,"Bangka Belitung, Sumatera Selatan",360016
+Indonesia,Bengkulu,360017
+Indonesia,Lampung,360018
+Indonesia,DKI Jakarta,360031
+Indonesia,"Banten, Jawa Barat",360032
+Indonesia,Jawa Tengah,360033
+Indonesia,DKI Yogyakarta,360034
+Indonesia,Jawa Timur,360035
+Indonesia,Bali,360051
+Indonesia,Nusa Tenggara Barat,360052
+Indonesia,Nusa Tenggara Timur,360053
+Indonesia,Kalimantan Barat,360061
+Indonesia,Kalimantan Tengah,360062
+Indonesia,Kalimantan Selatan,360063
+Indonesia,Kalimantan Timur,360064
+Indonesia,"Gorontalo, Sulawesi Utara",360071
+Indonesia,Sulawesi Tengah,360072
+Indonesia,"Sulawesi Barat, Sulawesi Selatan",360073
+Indonesia,Sulawesi Tenggara,360074
+Indonesia,"Maluku, Maluku Utara",360081
+Indonesia,"Papua, Papua Barat",360094
+Indonesia,East Timor,360626
+Indonesia,Waterbodies,360888
+Iran,Markazi,364000
+Iran,Gilan,364001
+Iran,Mazandaran,364002
+Iran,East Azarbayejan,364003
+Iran,West Azarbayejan,364004
+Iran,Kermanshah,364005
+Iran,Khuzestan,364006
+Iran,Fars,364007
+Iran,Kerman,364008
+Iran,Razavi Khorasan,364009
+Iran,Esfahan,364010
+Iran,Sistan and Baluchestan,364011
+Iran,Kordestan,364012
+Iran,Hamedan,364013
+Iran,Chaharmahal and Bakhtiyari,364014
+Iran,Lorestan,364015
+Iran,Ilam,364016
+Iran,Kohgiluyeh and Boyerahmad,364017
+Iran,Bushehr,364018
+Iran,Zanjan,364019
+Iran,Semnan,364020
+Iran,Yazd,364021
+Iran,Hormozgan,364022
+Iran,"Tehran, Alborz",364023
+Iran,Ardebil,364024
+Iran,Qom,364025
+Iran,Qazvin,364026
+Iran,Golestan,364027
+Iran,North Khorasan,364028
+Iran,South Khorasan,364029
+Iraq,Dahuk,368011
+Iraq,Nineveh,368012
+Iraq,Sulaymaniyah,368013
+Iraq,Al-Tameem,368014
+Iraq,Erbil,368015
+Iraq,Diala,368021
+Iraq,Al-Anbar,368022
+Iraq,Baghdad,368023
+Iraq,Babylon,368024
+Iraq,Kerbela,368025
+Iraq,Wasit,368026
+Iraq,Salah Al-Deen,368027
+Iraq,Al-Najaf,368028
+Iraq,Al-Qadisiya,368031
+Iraq,Al-Muthanna,368032
+Iraq,Thi-Qar,368033
+Iraq,Maysan,368034
+Iraq,Al-Basrah,368035
+Ireland,Dublin,372001
+Ireland,Midlands,372002
+Ireland,"Mid-East, Border",372003
+Ireland,"Mid-West, South-East",372004
+Ireland,West,372006
+Ireland,South West,372008
+Israel,Jerusalem,376001
+Israel,Northern,376002
+Israel,Haifa,376003
+Israel,Central,376004
+Israel,Tel-Aviv,376005
+Israel,Southern,376006
+Israel,Golan,376071
+Israel,"Judea, Samaria and Gaza areas",376072
+Israel,No Man's Land-Israel/West Bank,376073
+Israel,Unknown,376098
+Italy,"Piemonte, Valle d'Aosta",380001
+Italy,Lombardia,380003
+Italy,Trentino Alto Adige,380004
+Italy,Veneto,380005
+Italy,Friuli Venezia Giulia,380006
+Italy,Liguria,380007
+Italy,"Emilia Romagna, Marche",380008
+Italy,Toscana,380009
+Italy,Umbria,380010
+Italy,Lazio,380012
+Italy,Abruzzo,380013
+Italy,Molise,380014
+Italy,Campania,380015
+Italy,Puglia,380016
+Italy,Basilicata,380017
+Italy,Calabria,380018
+Italy,Sicilia,380019
+Italy,Sardegna,380020
+Côte D'Ivoire,"Lagunes, Sud Comoé, Sud Bandama, Agneby",384001
+Côte D'Ivoire,"Haut Sassandra, Marahoué, Fromager",384002
+Côte D'Ivoire,Savanes,384003
+Côte D'Ivoire,"Vallée du Bandam, Lacs, N'Zi Comoé",384004
+Côte D'Ivoire,Moyen Comoé,384005
+Côte D'Ivoire,"Montagnes, Moyen Cavally",384006
+Côte D'Ivoire,Zanzan,384008
+Côte D'Ivoire,Bas Sassandra,384009
+Côte D'Ivoire,"Denguele, Worodougou, Bafing",384010
+Jamaica,Kingston,388001
+Jamaica,Saint Andrew,388002
+Jamaica,Saint Thomas,388003
+Jamaica,Portland,388004
+Jamaica,Saint Mary,388005
+Jamaica,Saint Ann,388006
+Jamaica,Trelawny,388007
+Jamaica,Saint James,388008
+Jamaica,Hanover,388009
+Jamaica,Westmoreland,388010
+Jamaica,Saint Elizabeth,388011
+Jamaica,Manchester,388012
+Jamaica,Clarendon,388013
+Jamaica,Saint Catherine,388014
+Jordan,Amman,400011
+Jordan,Balqa,400012
+Jordan,Zarqa,400013
+Jordan,Madaba,400014
+Jordan,Irbid,400021
+Jordan,Mafraq,400022
+Jordan,Jarash,400023
+Jordan,Ajlun,400024
+Jordan,Karak,400031
+Jordan,Tafilah,400032
+Jordan,Ma'an,400033
+Jordan,Aqaba,400034
+Kenya,Nairobi,404001
+Kenya,Central,404002
+Kenya,Coast,404003
+Kenya,Eastern,404004
+Kenya,Northeastern,404005
+Kenya,Nyanza,404006
+Kenya,Rift Valley,404007
+Kenya,Western,404008
+Kyrghzstan,Bishkek,417001
+Kyrghzstan,Issyk-Kul region,417002
+Kyrghzstan,Dzhalal-Abad region,417003
+Kyrghzstan,Naryn region,417004
+Kyrghzstan,Batken region,417005
+Kyrghzstan,"Oshskaya region, City of Osh",417006
+Kyrghzstan,Talasskaya region,417007
+Kyrghzstan,Chuya region,417008
+Lao People's Democrat,Vientiane Capital,418001
+Lao People's Democrat,Phongsaly,418002
+Lao People's Democrat,Luangnamtha,418003
+Lao People's Democrat,Oudomxay,418004
+Lao People's Democrat,Bokeo,418005
+Lao People's Democrat,Luangprabang,418006
+Lao People's Democrat,Huaphanh,418007
+Lao People's Democrat,Xayaboury,418008
+Lao People's Democrat,Xienkhuang,418009
+Lao People's Democrat,Vientiane Province,418010
+Lao People's Democrat,Borikhamxay,418011
+Lao People's Democrat,Khammuane,418012
+Lao People's Democrat,Savanakhet,418013
+Lao People's Democrat,Saravane,418014
+Lao People's Democrat,Sekong,418015
+Lao People's Democrat,Champasack,418016
+Lao People's Democrat,Attapeu,418017
+Lao People's Democrat,Xaysomboune,418018
+Lesotho,Butha Buthe,426001
+Lesotho,Leribe,426002
+Lesotho,Berea,426003
+Lesotho,Maseru,426004
+Lesotho,Mafeteng,426005
+Lesotho,Mohale's Hoek,426006
+Lesotho,Quthing,426007
+Lesotho,Qacha's Nek,426008
+Lesotho,Mokhotlong,426009
+Lesotho,Thaba-Tseka,426010
+Lesotho,Unknown,426099
+Liberia,Grad Cape Mount,430012
+Liberia,"Gbarpolu, Lofa",430021
+Liberia,"Grand Gedeh, Grand Kru, Maryland, River Gee, Rivercess, Sinoe",430027
+Liberia,"Bomi, Bong, Grand Bassa, Margibi, Montserrado",430030
+Liberia,Nimba,430033
+Malawi,Chitipa,454101
+Malawi,Karonga,454102
+Malawi,"Nkhata Bay, Likoma",454103
+Malawi,Rumphi,454104
+Malawi,"Mzimba, Mzuzu City",454105
+Malawi,Kasungu,454201
+Malawi,Nkhotakota,454202
+Malawi,Ntchisi,454203
+Malawi,Dowa,454204
+Malawi,Salima,454205
+Malawi,"Lilongwe, Lilongwe City",454206
+Malawi,Mchinji,454207
+Malawi,Dedza,454208
+Malawi,Ntcheu,454209
+Malawi,Mangochi,454301
+Malawi,Machinga,454302
+Malawi,"Zomba, Zomba City",454303
+Malawi,Chiradzulu,454304
+Malawi,"Blantyre, Blantyre City",454305
+Malawi,"Mwanza, Neno",454306
+Malawi,Thyolo,454307
+Malawi,Mulanje,454308
+Malawi,Phalombe,454309
+Malawi,Chikwawa,454310
+Malawi,Nsanje,454311
+Malawi,Balaka,454312
+Malawi,Waterbodies,454888
+Malaysia,Johor,458001
+Malaysia,Kedah,458002
+Malaysia,Kelantan,458003
+Malaysia,Melaka,458004
+Malaysia,Negeri Sembilan,458005
+Malaysia,Pahang,458006
+Malaysia,Pulau Pinang,458007
+Malaysia,Perak,458008
+Malaysia,Perlis,458009
+Malaysia,"Selangor, Kuala Lumpur Federal Territory",458010
+Malaysia,Terengganu,458011
+Malaysia,"Sabah, Labuan Federal Territory",458012
+Malaysia,Sarawak,458013
+Mali,Kayes,466001
+Mali,Koulikoro,466002
+Mali,Sikasso,466003
+Mali,Ségou,466004
+Mali,Mopti,466005
+Mali,Tombouctou,466006
+Mali,"Gao, Kidal",466007
+Mali,Bamako,466009
+Mali,Unknown,466099
+Mauritius,Port Louis,480011
+Mauritius,Pamplemousses,480012
+Mauritius,Rivière du Rempart,480013
+Mauritius,Flacq,480014
+Mauritius,Grand Port,480015
+Mauritius,Savanne,480016
+Mauritius,Plaines Wilhems,480017
+Mauritius,Moka,480018
+Mauritius,Black River,480019
+Mauritius,"Rodrigues, Agaléga Islands, Saint Brandon",480020
+Mexico,Aguascalientes,484001
+Mexico,Baja California,484002
+Mexico,Baja California Sur,484003
+Mexico,Campeche,484004
+Mexico,Coahuila de Zaragoza,484005
+Mexico,Colima,484006
+Mexico,Chiapas,484007
+Mexico,Chihuahua,484008
+Mexico,Distrito Federal,484009
+Mexico,Durango,484010
+Mexico,Guanajuato,484011
+Mexico,Guerrero,484012
+Mexico,Hidalgo,484013
+Mexico,Jalisco,484014
+Mexico,México,484015
+Mexico,Michoacán de Ocampo,484016
+Mexico,Morelos,484017
+Mexico,Nayarit,484018
+Mexico,Nuevo León,484019
+Mexico,Oaxaca,484020
+Mexico,Puebla,484021
+Mexico,Querétaro,484022
+Mexico,Quintana Roo,484023
+Mexico,San Luis Potosí,484024
+Mexico,Sinaloa,484025
+Mexico,Sonora,484026
+Mexico,Tabasco,484027
+Mexico,Tamaulipas,484028
+Mexico,Tlaxcala,484029
+Mexico,Veracruz de Ignacio de la Llave,484030
+Mexico,Yucatán,484031
+Mexico,Zacatecas,484032
+Mongolia,Ulaanbaatar,496011
+Mongolia,Dornod,496021
+Mongolia,Sukhbaatar,496022
+Mongolia,Khentii,496023
+Mongolia,Tuv,496041
+Mongolia,Selenge,496043
+Mongolia,Dornogobi,496044
+Mongolia,Darkhan-Uul,496045
+Mongolia,Umnugobi,496046
+Mongolia,"Dundgobi, Gobisumber",496048
+Mongolia,Orkhon,496061
+Mongolia,Uvurkhangai,496062
+Mongolia,Bulgan,496063
+Mongolia,Bayankhongor,496064
+Mongolia,Arkhangai,496065
+Mongolia,Khuvsgul,496067
+Mongolia,Zavkhan,496081
+Mongolia,Gobi-Altai,496082
+Mongolia,Bayan-Ulgii,496083
+Mongolia,Khovd,496084
+Mongolia,Uvs,496085
+Morocco,Tanger-Tétouan-Al Hoceima,504001
+Morocco,Oriental,504002
+Morocco,Fès-Meknès,504003
+Morocco,Rabat-Salé-Kénitra,504004
+Morocco,Béni Mellal-Khénifra,504005
+Morocco,Casablanca-Settat,504006
+Morocco,Marrakech-Safi,504007
+Morocco,Drâa-Tafilalet,504008
+Morocco,Souss-Massa,504009
+Morocco,Guelmim-Oued Noun,504010
+Morocco,Laayoune-Sakia El Hamra,504011
+Morocco,Dakhla-Oued Ed-Dahab,504012
+Morocco,Unknown,504999
+Mozambique,Niassa,508001
+Mozambique,Cabo Delgado,508002
+Mozambique,Nampula,508003
+Mozambique,Zambézia,508004
+Mozambique,Tete,508005
+Mozambique,Manica,508006
+Mozambique,Sofala,508007
+Mozambique,Inhambane,508008
+Mozambique,Gaza,508009
+Mozambique,Maputo,508010
+Mozambique,Cidade de Maputo,508011
+Mozambique,Lago Niassa,508088
+Nepal,Mechi,524001
+Nepal,Koshi,524002
+Nepal,Sagarmatha,524003
+Nepal,Janakpur,524004
+Nepal,Bagmati,524005
+Nepal,Narayani,524006
+Nepal,Gandaki,524007
+Nepal,Dhawalagiri,524008
+Nepal,Lumbini,524009
+Nepal,Rapti,524010
+Nepal,Bheri,524011
+Nepal,Karnali,524012
+Nepal,Seti,524013
+Nepal,Mahakali,524014
+Nicaragua,"Nueva Segovia, Jinotega",558005
+Nicaragua,Madriz,558020
+Nicaragua,"Estelí, León",558025
+Nicaragua,Chinandega,558030
+Nicaragua,"Matagalpa, Atlantico Norte, Atlantico Sur, Zelaya",558040
+Nicaragua,Boaco,558050
+Nicaragua,"Managua, Masaya",558055
+Nicaragua,Chontales,558065
+Nicaragua,Granada,558070
+Nicaragua,Carazo,558075
+Nicaragua,Rivas,558080
+Nicaragua,Río San Juan,558085
+Nicaragua,Waterbody,558088
+Nicaragua,Unknown,558099
+Nigeria,Abia,566001
+Nigeria,Adamawa,566002
+Nigeria,Akwa Ibom,566003
+Nigeria,Anambra,566004
+Nigeria,Bauchi,566005
+Nigeria,Bayelsa,566006
+Nigeria,Benue,566007
+Nigeria,Borno,566008
+Nigeria,Cross River,566009
+Nigeria,Delta,566010
+Nigeria,Ebonyi,566011
+Nigeria,Edo,566012
+Nigeria,Ekiti,566013
+Nigeria,Enugu,566014
+Nigeria,Gombe,566015
+Nigeria,Imo,566016
+Nigeria,Jigawa,566017
+Nigeria,Kaduna,566018
+Nigeria,Kano,566019
+Nigeria,Katsina,566020
+Nigeria,Kebbi,566021
+Nigeria,Kogi,566022
+Nigeria,Kwara,566023
+Nigeria,Lagos,566024
+Nigeria,Nasarawa,566025
+Nigeria,Niger,566026
+Nigeria,Ogun,566027
+Nigeria,Ondo,566028
+Nigeria,Osun,566029
+Nigeria,Oyo,566030
+Nigeria,Plateau,566031
+Nigeria,Rivers,566032
+Nigeria,Sokoto,566033
+Nigeria,Taraba,566034
+Nigeria,Yobe,566035
+Nigeria,Zamfara,566036
+Nigeria,Federal Capital Territory Abuja,566037
+Nigeria,Lake Chad,566088
+Nigeria,Unknown,566099
+Pakistan,North-West Frontier Province,586001
+Pakistan,Fata,586002
+Pakistan,"Punjab, Islamabad",586003
+Pakistan,Sind,586004
+Pakistan,Baluchistan,586005
+Pakistan,Northern areas,586007
+Pakistan,Kashmir,586008
+Panama,Coclé,591002
+Panama,"Colón, Comarca Kuna Yala (San Blas)",591003
+Panama,"Bocas de Toro, Chiriquí, Comarca Ngäbe Buglé, Veraguas",591004
+Panama,"Comarca Emberá, Darién",591005
+Panama,Herrera,591006
+Panama,Los Santos,591007
+Panama,Panamá,591008
+Papua New Guinea,Western,598001
+Papua New Guinea,Gulf,598002
+Papua New Guinea,Central,598003
+Papua New Guinea,National Capital District,598004
+Papua New Guinea,Milne Bay,598005
+Papua New Guinea,Northern,598006
+Papua New Guinea,"Southern Highlands, Hela",598007
+Papua New Guinea,Enga,598008
+Papua New Guinea,"Western Highlands, Jiwaka",598009
+Papua New Guinea,Chimbu,598010
+Papua New Guinea,Eastern Highlands,598011
+Papua New Guinea,Morobe,598012
+Papua New Guinea,Madang,598013
+Papua New Guinea,East Sepik,598014
+Papua New Guinea,West Sepik,598015
+Papua New Guinea,Manus,598016
+Papua New Guinea,New Ireland,598017
+Papua New Guinea,East New Britain,598018
+Papua New Guinea,West New Britain,598019
+Papua New Guinea,Autonomous Region of Bougainville,598020
+Paraguay,Concepción,600001
+Paraguay,San Pedro,600002
+Paraguay,Cordillera,600003
+Paraguay,Guaira,600004
+Paraguay,"Caaguazú, Canindeyú, Alto Paraná",600005
+Paraguay,Caazapá,600006
+Paraguay,Itapúa,600007
+Paraguay,"Misiones, Ñeembucú",600008
+Paraguay,Paraguarí,600009
+Paraguay,Central,600011
+Paraguay,Amambay,600013
+Paraguay,"Alto Paraguay, Boquerón, Presidente Hayes",600015
+Paraguay,Asunción,600019
+Paraguay,Unknown,600099
+Peru,Amazonas,604001
+Peru,Áncash,604002
+Peru,Apurímac,604003
+Peru,Arequipa,604004
+Peru,Ayacucho,604005
+Peru,Cajamarca,604006
+Peru,Callao,604007
+Peru,Cusco,604008
+Peru,Huancavelica,604009
+Peru,Huánuco,604010
+Peru,Ica,604011
+Peru,Junín,604012
+Peru,La Libertad,604013
+Peru,Lambayeque,604014
+Peru,Lima,604015
+Peru,Loreto,604016
+Peru,Madre de Dios,604017
+Peru,Moquegua,604018
+Peru,Pasco,604019
+Peru,Piura,604020
+Peru,Puno,604021
+Peru,San Martín,604022
+Peru,Tacna,604023
+Peru,Tumbes,604024
+Peru,Ucayali,604025
+Peru,Lake Titicaca,604088
+Philippines,Abra,608001
+Philippines,Agusan del norte,608002
+Philippines,Agusan del sur,608003
+Philippines,Aklan,608004
+Philippines,Albay,608005
+Philippines,Antique,608006
+Philippines,"Basilan, City Of Isabela",608007
+Philippines,Bataan,608008
+Philippines,Batangas,608010
+Philippines,Benguet,608011
+Philippines,Bohol,608012
+Philippines,Bukidnon,608013
+Philippines,Bulacan,608014
+Philippines,"Cagayan, Batanes",608015
+Philippines,Camarines norte,608016
+Philippines,Camarines Sur,608017
+Philippines,Camiguin,608018
+Philippines,Capiz,608019
+Philippines,Catanduanes,608020
+Philippines,Cavite,608021
+Philippines,Cebu,608022
+Philippines,Davao (Davao del Norte),608023
+Philippines,"Davao del Sur, Davao Occidental",608024
+Philippines,Davao Oriental,608025
+Philippines,Eastern Samar,608026
+Philippines,Ifugao,608027
+Philippines,Ilocos Norte,608028
+Philippines,Ilocos Sur,608029
+Philippines,"Iloilo, Guimaras",608030
+Philippines,Isabela,608031
+Philippines,"Kalinga-Apayao, Apayo, Kalinga",608032
+Philippines,La Union,608033
+Philippines,Laguna,608034
+Philippines,Lanao del Norte,608035
+Philippines,"Lanao del Sur, Maguindanao, Marawi City and Cotabato city",608036
+Philippines,"Leyte, Biliran",608037
+Philippines,Manila,608039
+Philippines,Marinduque,608040
+Philippines,Masbate,608041
+Philippines,Misamis Occidental,608042
+Philippines,Misamis Oriental,608043
+Philippines,Mountain Province,608044
+Philippines,Negros Occidental,608045
+Philippines,Negros Oriental,608046
+Philippines,Cotabato (North Cotabato),608047
+Philippines,Northern Samar,608048
+Philippines,Nueva Ecija,608049
+Philippines,Nueva Vizcaya,608050
+Philippines,Occidental Mindoro,608051
+Philippines,Oriental Mindoro,608052
+Philippines,Palawan,608053
+Philippines,Pampanga,608054
+Philippines,Pangasinan,608055
+Philippines,Quezon,608056
+Philippines,Quirino,608057
+Philippines,Rizal,608058
+Philippines,Romblon,608059
+Philippines,Samar (Western Samar),608060
+Philippines,Siquijor,608061
+Philippines,Sorsogon,608062
+Philippines,"South Cotabato, Sarangani",608063
+Philippines,Southern Leyte,608064
+Philippines,Sultan Kudarat,608065
+Philippines,Sulu,608066
+Philippines,"Surigao Del Norte, Dinagat islands",608067
+Philippines,Surigao del Sur,608068
+Philippines,Tarlac,608069
+Philippines,Tawi-Tawi,608070
+Philippines,Zambales,608071
+Philippines,Zamboanga Norte,608072
+Philippines,"Zamboanga del Sur, Zamboanga Sibugay",608073
+Philippines,"Manila Metro, 2nd District",608074
+Philippines,"Manila Metro, 3rd District",608075
+Philippines,"Manila Metro, 4th District",608076
+Philippines,Aurora,608077
+Philippines,Waterbodies,608888
+Poland,Dolnośląskie,616002
+Poland,Kujawsko pomorskie,616004
+Poland,Lubelskie,616006
+Poland,Lubuskie,616008
+Poland,Łódzkie,616010
+Poland,Małopolskie,616012
+Poland,Mazowieckie,616014
+Poland,Opolskie,616016
+Poland,Podkarpackie,616018
+Poland,Podlaskie,616020
+Poland,Pomorskie,616022
+Poland,Śląskie,616024
+Poland,Świętokrzyskie,616026
+Poland,Warmińsko mazurskie,616028
+Poland,Wielkopolskie,616030
+Poland,Zachodniopomorskie,616032
+Portugal,Minho-Lima,620111
+Portugal,Cávado,620112
+Portugal,Ave,620113
+Portugal,Grande Porto,620114
+Portugal,Tâmega,620115
+Portugal,Entre Douro e Vouga,620116
+Portugal,Douro,620117
+Portugal,Alto Trás-os-Montes,620118
+Portugal,Algarve,620150
+Portugal,Baixo Vouga,620161
+Portugal,Baixo Mondego,620162
+Portugal,Pinhal Litoral,620163
+Portugal,Dão-Lafões,620165
+Portugal,Oeste,620166
+Portugal,Médio Tejo,620167
+Portugal,Other Center,620169
+Portugal,Grande Lisboa,620171
+Portugal,Península de Setúbal,620172
+Portugal,Lezíria do Tejo,620185
+Portugal,Other Alentejo,620189
+Portugal,Região Autónoma dos Açores,620200
+Portugal,Região Autónoma da Madeira,620300
+Puerto Rico,1079,630079
+Puerto Rico,1080,630080
+Puerto Rico,1081,630081
+Puerto Rico,1082,630082
+Puerto Rico,1083,630083
+Puerto Rico,1084,630084
+Puerto Rico,1085,630085
+Romania,Alba,642001
+Romania,Arad,642002
+Romania,Arges,642003
+Romania,Bacau,642004
+Romania,Bihor,642005
+Romania,Bistrita Nasaud,642006
+Romania,Botosani,642007
+Romania,Brasov,642008
+Romania,Braila,642009
+Romania,Buzau,642010
+Romania,Caras Severin,642011
+Romania,Cluj,642012
+Romania,Constanta,642013
+Romania,Covasna,642014
+Romania,Dambovita,642015
+Romania,Dolj,642016
+Romania,Galati,642017
+Romania,Gorj,642018
+Romania,Harghita,642019
+Romania,Hunedoara,642020
+Romania,Iasi,642022
+Romania,Maramures,642024
+Romania,Mehedinti,642025
+Romania,Mures,642026
+Romania,Neamt,642027
+Romania,Olt,642028
+Romania,Prahova,642029
+Romania,Satu Mare,642030
+Romania,Salaj,642031
+Romania,Sibiu,642032
+Romania,Suceava,642033
+Romania,Teleorman,642034
+Romania,Timis,642035
+Romania,Tulcea,642036
+Romania,Vaslui,642037
+Romania,Vâlcea,642038
+Romania,Vrancea,642039
+Romania,Bucharest Sector 1 to 6,642043
+Romania,"Calarasi, Giurgiu, Ialomita, Ilfov",642051
+Russia,Altai Krai,643001
+Russia,Krasnodar Krai,643003
+Russia,Krasnoyarsk Krai,643004
+Russia,Primorsky Krai,643005
+Russia,Stavropol Krai,643007
+Russia,Khabarovsk Krai,643008
+Russia,Amur Oblast,643010
+Russia,Arkhangelsk Oblast,643011
+Russia,Astrakhan Oblast,643012
+Russia,Nenets Autonomous District,643013
+Russia,Belgorod Oblast,643014
+Russia,Bryansk Oblast,643015
+Russia,Vladimir Oblast,643017
+Russia,Volgograd Oblast,643018
+Russia,Vologda Oblast,643019
+Russia,Voronezh Oblast,643020
+Russia,Nizhny Novgorod Oblast,643022
+Russia,Ivanovo Oblast,643024
+Russia,Irkutsk Oblast,643025
+Russia,Republic of Ingushetia,643026
+Russia,Kaliningrad Oblast,643027
+Russia,Tver Oblast,643028
+Russia,Kaluga Oblast,643029
+Russia,Kamchatka Krai,643030
+Russia,Kemerovo Oblast,643032
+Russia,Kirov Oblast,643033
+Russia,Kostroma Oblast,643034
+Russia,Samara Oblast,643036
+Russia,Kurgan Oblast,643037
+Russia,Kursk Oblast,643038
+Russia,City of Federal Importance St. Petersburg,643040
+Russia,Leningrad Oblast,643041
+Russia,Lipetsk Oblast,643042
+Russia,Magadan Oblast,643044
+Russia,City of Federal Importance Moscow,643045
+Russia,Moscow Oblast,643046
+Russia,Murmansk Oblast,643047
+Russia,Novgorod Oblast,643049
+Russia,Novosibirsk Oblast,643050
+Russia,Omsk Oblast,643052
+Russia,Orenburg Oblast,643053
+Russia,Oryol Oblast,643054
+Russia,Penza Oblast,643056
+Russia,Perm Krai,643057
+Russia,Pskov Oblast,643058
+Russia,Rostov Oblast,643060
+Russia,Ryazan Oblast,643061
+Russia,Saratov Oblast,643063
+Russia,Sakhalin Oblast,643064
+Russia,Sverdlovsk Oblast,643065
+Russia,Smolensk Oblast,643066
+Russia,Tambov Oblast,643068
+Russia,Tomsk Oblast,643069
+Russia,Tula Oblast,643070
+Russia,Tyumen Oblast,643071
+Russia,Khanty-Mansi Autonomous District - Yugra,643072
+Russia,Ulyanovsk Oblast,643073
+Russia,Yamalo-Nenets Autonomous District,643074
+Russia,Chelyabinsk Oblast,643075
+Russia,"Zabaykalsky Krai, Aginsky Buryat District",643076
+Russia,Chukotka Autonomous Region,643077
+Russia,Yaroslavskaya Oblast,643078
+Russia,Republic of Adygea,643079
+Russia,Republic of Bashkortostan,643080
+Russia,Republic of Buryatia,643081
+Russia,Republic of Dagestan,643082
+Russia,Kabardino-Balkaria Republic,643083
+Russia,Altai Republic,643084
+Russia,Republic of Kalmykia,643085
+Russia,Republic of Karelia,643086
+Russia,Komi Republic,643087
+Russia,Mari El Republic,643088
+Russia,Republic of Mordovia,643089
+Russia,Republic of North Ossetia-Alania,643090
+Russia,Karachay-Cherkess Republic,643091
+Russia,Republic of Tatarstan,643092
+Russia,Tyva Republic,643093
+Russia,Udmurtia Republic,643094
+Russia,Republic of Khakassia,643095
+Russia,Chechen Republic,643096
+Russia,Chuvash Republic,643097
+Russia,Republic of Sakha (Yakutia),643098
+Russia,Jewish Autonomous Region,643099
+Rwanda,"Byumba, Kigali Ngali, Kigali Ville, Kibungo, Umutara",646002
+Rwanda,Gitarama,646003
+Rwanda,Butare,646004
+Rwanda,Gikongoro,646005
+Rwanda,Cyangugu,646006
+Rwanda,Kibuye,646007
+Rwanda,Gisenyi,646008
+Rwanda,Ruhengeri,646009
+Saint Lucia,"Castries city, Castries rural, Castries suburban",662003
+Saint Lucia,"Choiseul, Laborie, Vieux-Fort",662009
+Saint Lucia,"Anse-la-Raye, Canaries, Micoud, Soufriere",662010
+Saint Lucia,"Dennery, Gros-Islet",662012
+Senegal,Dakar,686001
+Senegal,Ziguinchor,686002
+Senegal,Diourbel,686003
+Senegal,"Saint Louis, Louga, Matam",686004
+Senegal,"Tambacounda, Kedougou",686005
+Senegal,"Kaolack, Fatick, Kaffrine",686006
+Senegal,Thies,686007
+Senegal,"Kolda, Sedhiou",686010
+Sierra Leone,Kailahun,694011
+Sierra Leone,Kenema,694012
+Sierra Leone,Kono,694013
+Sierra Leone,Bombali,694021
+Sierra Leone,Kambia,694022
+Sierra Leone,Koinadugu,694023
+Sierra Leone,Port Loko,694024
+Sierra Leone,Tonkolili,694025
+Sierra Leone,Bo,694031
+Sierra Leone,Bonthe,694032
+Sierra Leone,Moyamba,694033
+Sierra Leone,Pujehun,694034
+Sierra Leone,Western Rural,694041
+Sierra Leone,Western Urban,694042
+Slovakia,Bratislavský,703001
+Slovakia,Trnavský,703002
+Slovakia,Trenčiansky,703003
+Slovakia,Nitriansky,703004
+Slovakia,Žilinský,703005
+Slovakia,Banskobystrický,703006
+Slovakia,Prešovský,703007
+Slovakia,Košický,703008
+Vietnam,"Thành Phố Hà Nội, Vĩnh Phúc, Hoà Bình, Phú Thọ",704001
+Vietnam,"Hà Giang, Tuyên Quang",704002
+Vietnam,"Cao Bằng, Bắc Kạn, Thái Nguyên",704003
+Vietnam,"Lào Cai, Điện Biên, Lai Châu, Yên Bái",704010
+Vietnam,Sơn La,704014
+Vietnam,Lạng Sơn,704020
+Vietnam,Quảng Ninh,704022
+Vietnam,"Bắc Giang, Bắc Ninh",704024
+Vietnam,"Hải Dương, Hưng Yên",704030
+Vietnam,Thành Phố Hải Phòng,704031
+Vietnam,Thái Bình,704034
+Vietnam,"Hà Nam, Nam Định, Ninh Bình",704035
+Vietnam,Thanh Hoá,704038
+Vietnam,"Nghệ An, Hà Tĩnh",704040
+Vietnam,Quảng Bình,704044
+Vietnam,Quảng Trị,704045
+Vietnam,Thừa Thiên Huế,704046
+Vietnam,"Thành Phố Đà Nẵng, Quảng Nam",704048
+Vietnam,Quảng Ngãi,704051
+Vietnam,Bình Định,704052
+Vietnam,Phú Yên,704054
+Vietnam,Khánh Hoà,704056
+Vietnam,"Ninh Thuận, Bình Thuận",704058
+Vietnam,"Kon Tum, Gia Lai",704062
+Vietnam,"Đắk Lắk, Đắk Nông",704066
+Vietnam,Lâm Đồng,704068
+Vietnam,"Bình Phước, Bình Dương",704070
+Vietnam,Tây Ninh,704072
+Vietnam,"Đồng Nai, Bà Rịa - Vũng Tàu",704075
+Vietnam,Thành Phố Hồ Chí Minh,704079
+Vietnam,Long An,704080
+Vietnam,Tiền Giang,704082
+Vietnam,Bến Tre,704083
+Vietnam,"Trà Vinh, Vĩnh Long",704084
+Vietnam,Đồng Tháp,704087
+Vietnam,An Giang,704089
+Vietnam,Kiên Giang,704091
+Vietnam,"Thành Phố Cần Thơ, Hậu Giang, Sóc Trăng",704092
+Vietnam,"Bạc Liêu, Cà Mau",704095
+Slovenia,Pomurska,705001
+Slovenia,Podravska,705002
+Slovenia,Koroška,705003
+Slovenia,Savinjska,705004
+Slovenia,Zasavska,705005
+Slovenia,Spodnjeposavska,705006
+Slovenia,Jugovzhodna Slovenija,705007
+Slovenia,Osrednjeslovenska,705008
+Slovenia,Gorenjska,705009
+Slovenia,Notranjsko-kraška,705010
+Slovenia,Goriška,705011
+Slovenia,Obalno-kraška,705012
+Slovenia,Unknown,705099
+South Africa,Western Cape,710001
+South Africa,Free State,710004
+South Africa,"Eastern Cape, KwaZulu-Natal",710005
+South Africa,"Gauteng, Limpopo, Mpumalanga, North West, Northern Cape",710007
+South Africa,Unknown,710999
+Zimbabwe,Bulawayo,716000
+Zimbabwe,Manicaland,716001
+Zimbabwe,Mashonaland Central,716002
+Zimbabwe,Mashonaland East,716003
+Zimbabwe,Mashonaland West,716004
+Zimbabwe,Matabeleland North,716005
+Zimbabwe,Matabeleland South,716006
+Zimbabwe,Midlands,716007
+Zimbabwe,Masvingo,716008
+Zimbabwe,Harare,716009
+Spain,Galicia,724011
+Spain,Principado de Asturias,724012
+Spain,Cantabria,724013
+Spain,País Vasco,724021
+Spain,Comunidad Foral de Navarra,724022
+Spain,La Rioja,724023
+Spain,Aragón,724024
+Spain,Comunidad de Madrid,724030
+Spain,Castilla y León,724041
+Spain,Castilla-La Mancha,724042
+Spain,Extremadura,724043
+Spain,Cataluña,724051
+Spain,Comunidad Valenciana,724052
+Spain,Islas Baleares,724053
+Spain,Andalucía,724061
+Spain,Región de Murcia,724062
+Spain,Ciudad Autónoma de Ceuta,724063
+Spain,Ciudad Autónoma de Melilla,724064
+Spain,Canarias,724070
+Spain,Unknown,724099
+South Sudan,Upper Nile,728071
+South Sudan,Jonglei,728072
+South Sudan,Unity,728073
+South Sudan,Warrap,728081
+South Sudan,Northern Bahr El Ghazal,728082
+South Sudan,Western Bahr El Ghazal,728083
+South Sudan,Lakes,728084
+South Sudan,Western Equatoria,728091
+South Sudan,Central Equatoria,728092
+South Sudan,Eastern Equatoria,728093
+Sudan,Northern,729011
+Sudan,Nahr El Nil,729012
+Sudan,Red Sea,729021
+Sudan,Kassala,729022
+Sudan,Al Gedarif,729023
+Sudan,Khartoum,729031
+Sudan,Al Gezira,729041
+Sudan,White Nile,729042
+Sudan,Sinnar,729043
+Sudan,Blue Nile,729044
+Sudan,North Kordofan,729051
+Sudan,South Kordofan,729052
+Sudan,North Darfur,729061
+Sudan,West Darfur,729062
+Sudan,South Darfur,729063
+Suriname,Paramaribo,740001
+Suriname,Wanica,740002
+Suriname,Nickerie,740003
+Suriname,"Saramacca, Coronie",740005
+Suriname,"Marowijne, Commewijne",740006
+Suriname,"Brokopondo, Para",740008
+Suriname,Sipaliwini,740010
+Switzerland,Zurich,756001
+Switzerland,Bern,756002
+Switzerland,Luzern,756003
+Switzerland,Uri,756004
+Switzerland,Schwyz,756005
+Switzerland,Obwalden,756006
+Switzerland,Nidwalden,756007
+Switzerland,Glarus,756008
+Switzerland,Zug,756009
+Switzerland,Fribourg,756010
+Switzerland,Solothurn,756011
+Switzerland,Basel-Stadt,756012
+Switzerland,Basel-Landschaft,756013
+Switzerland,Schaffhausen,756014
+Switzerland,"Appenzell Ausserrhoden, Appenzell Innerrhoden",756015
+Switzerland,St. Gallen,756017
+Switzerland,Graubunden,756018
+Switzerland,Aargau,756019
+Switzerland,Thurgau,756020
+Switzerland,Ticino,756021
+Switzerland,Vaud,756022
+Switzerland,Valais,756023
+Switzerland,Neuchatel,756024
+Switzerland,Geneve,756025
+Switzerland,Jura,756026
+Switzerland,Waterbodies,756088
+Thailand,Bangkok,764010
+Thailand,Samut Prakan,764011
+Thailand,Nonthaburi,764012
+Thailand,Pathum Thani,764013
+Thailand,Phra Nakhon Si Ayutthaya,764014
+Thailand,Ang Thong,764015
+Thailand,Lop Buri,764016
+Thailand,Sing Buri,764017
+Thailand,Chai Nat,764018
+Thailand,"Sa Kaeo, Prachin Buri",764019
+Thailand,Chon Buri,764020
+Thailand,Rayong,764021
+Thailand,Chanthaburi,764022
+Thailand,Trat,764023
+Thailand,Chachoengsao,764024
+Thailand,Nakhon Nayok,764026
+Thailand,Saraburi,764027
+Thailand,Nakhon Ratchasima,764030
+Thailand,Buri Ram,764031
+Thailand,Surin,764032
+Thailand,Si Sa Ket,764033
+Thailand,"Ubon Ratchathani, Yasothon, Amnat Charoen",764034
+Thailand,Chaiyaphum,764036
+Thailand,"Nong Bua Lam Phu, Udon Thani",764039
+Thailand,Khon Kaen,764040
+Thailand,Loei,764042
+Thailand,Nong Khai,764043
+Thailand,Maha Sarakham,764044
+Thailand,Roi Et,764045
+Thailand,Kalasin,764046
+Thailand,Sakon Nakhon,764047
+Thailand,"Nakhon Phanom, Mukdahan",764048
+Thailand,Chiang Mai,764050
+Thailand,Lamphun,764051
+Thailand,Lampang,764052
+Thailand,Uttaradit,764053
+Thailand,Phrae,764054
+Thailand,Nan,764055
+Thailand,"Phayao, Chiang Rai",764057
+Thailand,Mae Hong Son,764058
+Thailand,Nakhon Sawan,764060
+Thailand,Uthai Thani,764061
+Thailand,Kamphaeng Phet,764062
+Thailand,Tak,764063
+Thailand,Sukhothai,764064
+Thailand,Phitsanulok,764065
+Thailand,Phichit,764066
+Thailand,Phetchabun,764067
+Thailand,Ratchaburi,764070
+Thailand,Kanchanaburi,764071
+Thailand,Suphanburi,764072
+Thailand,Nakhon Pathom,764073
+Thailand,Samut Sakhon,764074
+Thailand,Samut Songkhram,764075
+Thailand,Phetchaburi,764076
+Thailand,Prachuap Khiri Khan,764077
+Thailand,Nakhon Si Thammarat,764080
+Thailand,Phangnga,764082
+Thailand,Phuket,764083
+Thailand,"Krabi, Surat Thani",764084
+Thailand,"Ranong, Chumphon",764086
+Thailand,Songkhla,764090
+Thailand,Satun,764091
+Thailand,Trang,764092
+Thailand,Phatthalung,764093
+Thailand,Pattani,764094
+Thailand,Yala,764095
+Thailand,Narathiwat,764096
+Thailand,Waterbody,764888
+Togo,"Maritime, Lomé",768001
+Togo,"Plateaux, Centrale, Kara",768002
+Togo,Savanes,768003
+Trinidad and Tobago,Port of Spain,780010
+Trinidad and Tobago,San Fernando,780020
+Trinidad and Tobago,"Diego Martin, San Juan/Laventille, Tunapuna/Piarco, Chaguanas, Sangre Grande, Couva/Tabaquite /Talparo, Rio Claro/Mayaro, Siparia, Penal/Debe, Princess Town, Port Fontin, Caroni, St. Andrew/St. David, Victoria, St. Patrick, Arima",780080
+Trinidad and Tobago,"St. Paul, St. Mary, St. David, St. George, St. Patrick, St. Andrew, St. John, Tobago",780094
+Turkey,"Adana, Gaziantep, Osmaniye, Kilis",792001
+Turkey,Adiyaman,792002
+Turkey,Afyon,792003
+Turkey,Agri,792004
+Turkey,Amasya,792005
+Turkey,"Ankara, Kirikkale",792006
+Turkey,Antalya,792007
+Turkey,Artvin,792008
+Turkey,Aydin,792009
+Turkey,Balikesir,792010
+Turkey,Bilecik,792011
+Turkey,Bingöl,792012
+Turkey,Bitlis,792013
+Turkey,Burdur,792015
+Turkey,Çanakkale,792017
+Turkey,Çorum,792019
+Turkey,Denizli,792020
+Turkey,Diyarbakir,792021
+Turkey,Edirne,792022
+Turkey,Elazig,792023
+Turkey,Erzincan,792024
+Turkey,Erzurum,792025
+Turkey,Eskisehir,792026
+Turkey,Giresun,792028
+Turkey,"Gümüshane, Bayburt",792029
+Turkey,Hatay,792031
+Turkey,Isparta,792032
+Turkey,Mersin (içel),792033
+Turkey,"Istanbul, Bursa, Kocaeli, Yalova",792034
+Turkey,Izmir,792035
+Turkey,"Kars, Ardahan, Igdir",792036
+Turkey,Kastamonu,792037
+Turkey,Kayseri,792038
+Turkey,Kirklareli,792039
+Turkey,Kirsehir,792040
+Turkey,"Konya, Karaman",792042
+Turkey,Kütahya,792043
+Turkey,Malatya,792044
+Turkey,Manisa,792045
+Turkey,Kahramanmaras,792046
+Turkey,"Mardin, Batman, Siirt, Sirnak, Hakkari",792047
+Turkey,Mugla,792048
+Turkey,Mus,792049
+Turkey,Nevsehir,792050
+Turkey,"Aksaray, Nigde",792051
+Turkey,Ordu,792052
+Turkey,Rize,792053
+Turkey,Sakarya,792054
+Turkey,Samsun,792055
+Turkey,Sinop,792057
+Turkey,Sivas,792058
+Turkey,Tekirdag,792059
+Turkey,Tokat,792060
+Turkey,Trabzon,792061
+Turkey,Tunceli,792062
+Turkey,Sanliurfa,792063
+Turkey,Usak,792064
+Turkey,Van,792065
+Turkey,Yozgat,792066
+Turkey,"Zonguldak, Bartin, Karabük, Çankiri",792067
+Turkey,"Düzce, Bolu",792081
+Uganda,Kalangala,800101
+Uganda,Kampala,800102
+Uganda,"Kiboga, Kyankwanzi",800103
+Uganda,"Luwero, Nakasongola, Nakaseke",800104
+Uganda,"Masaka, Ssembabule, Bukomansimbi, Kalungu, Lwengo",800105
+Uganda,"Mpigi, Wakiso, Butambala, Gomba",800106
+Uganda,"Mubende, Mityana",800107
+Uganda,"Mukono, Kayunga, Buikwe, Buvuma",800108
+Uganda,"Rakai, Lyantonde",800110
+Uganda,"Bugiri, Iganga, Mayuge, Namutumba, Luuka, Namayingo",800201
+Uganda,"Busia, Tororo, Butaleja",800202
+Uganda,Jinja,800204
+Uganda,"Kamuli, Kaliro, Buyende",800205
+Uganda,"Kapchorwa, Bukwo, Kween",800206
+Uganda,"Katakwi, Soroti, Kaberamaido, Amuria, Serere",800207
+Uganda,"Kumi, Bukedea, Ngora",800208
+Uganda,"Mbale, Sironko, Bududa, Manafwa, Bulambuli",800209
+Uganda,"Pallisa, Budaka, Kibuku",800210
+Uganda,"Adjumani, Moyo",800301
+Uganda,"Apac, Oyam, Kole",800302
+Uganda,"Arua, Yumbe, Koboko, Maracha",800303
+Uganda,"Gulu, Amuru, Nwoya, Omoro",800304
+Uganda,"Kitgum, Pader, Agago, Lamwo",800305
+Uganda,"Kotido, Moroto, Nakapiripirit, Abim, Kaabong, Amudat, Napak",800306
+Uganda,"Lira, Amolatar, Dokolo, Alebtong, Otuke",800307
+Uganda,"Nebbi, Zombo",800310
+Uganda,"Bundibugyo, Ntoroko",800401
+Uganda,"Bushenyi, Mbarara, Ntungamo, Ibanda, Isingiro, Kiruhura, Buhweju, Mitooma, Rubirizi, Sheema",800402
+Uganda,Hoima,800403
+Uganda,"Kabale, Rubanda",800404
+Uganda,"Kabarole, Kamwenge, Kyenjojo, Kyegegwa",800405
+Uganda,Kasese,800406
+Uganda,"Kibaale, Kagadi, Kakumiro",800407
+Uganda,Kisoro,800408
+Uganda,"Masindi, Buliisa, Kiryandongo",800409
+Uganda,"Rukungiri, Kanungu",800412
+Uganda,Waterbodies,800888
+Uganda,Unknown,800998
+Ukraine,The Autonomous Republic of Crimea,804001
+Ukraine,Vinnytska oblast,804005
+Ukraine,Volynska oblast,804007
+Ukraine,Dnipropetrovska oblast,804012
+Ukraine,Donetska oblast,804014
+Ukraine,Zhytomyrska oblast,804018
+Ukraine,Zakarpatska oblast,804021
+Ukraine,Zaporizka oblast,804023
+Ukraine,Ivano-Frankivska oblast,804026
+Ukraine,Kyivska oblast,804032
+Ukraine,Kirovohradska oblast,804035
+Ukraine,Luhanska oblast,804044
+Ukraine,Lvivska oblast,804046
+Ukraine,Mykolaivska oblast,804048
+Ukraine,Odeska oblast,804051
+Ukraine,Poltavska oblast,804053
+Ukraine,Rivnenska oblast,804056
+Ukraine,Sumska oblast,804059
+Ukraine,Ternopilska oblast,804061
+Ukraine,Kharkivska oblast,804063
+Ukraine,Khersonska oblast,804065
+Ukraine,Khmelnytska oblast,804068
+Ukraine,Cherkaska oblast,804071
+Ukraine,Chernivetska oblast,804073
+Ukraine,Chernihivska oblast,804074
+Ukraine,Kyiv (independent city),804080
+Ukraine,Sevastopol (independent city),804085
+Egypt,"Giza, 6th October City, Cairo, Helwan",818001
+Egypt,Alexandria,818002
+Egypt,Port Said,818003
+Egypt,Suez,818004
+Egypt,Demietta,818011
+Egypt,Dakahlia,818012
+Egypt,Sharkia,818013
+Egypt,Kaliobia,818014
+Egypt,Kafr Sheikh,818015
+Egypt,Gharbia,818016
+Egypt,"Menoufia, Behera",818018
+Egypt,Ismailia,818019
+Egypt,Bani Swif,818022
+Egypt,Fayoum,818023
+Egypt,Menia,818024
+Egypt,Asiut,818025
+Egypt,Sohag,818026
+Egypt,"Qena, Luxor",818027
+Egypt,Aswan,818028
+Egypt,Red Sea,818031
+Egypt,New Valley,818032
+Egypt,Marsa Matroh,818033
+Egypt,North Sinai,818034
+Egypt,South Sinai,818035
+Egypt,Waterbody,818088
+United Kingdom,North East,826101
+United Kingdom,North West,826102
+United Kingdom,Yorkshire and the Humber,826103
+United Kingdom,East Midlands,826104
+United Kingdom,West Midlands,826105
+United Kingdom,East of England,826106
+United Kingdom,South East,826107
+United Kingdom,South West,826108
+United Kingdom,"Outer London, Inner London",826110
+United Kingdom,Scotland,826111
+United Kingdom,Wales,826112
+United Kingdom,Northern Ireland,826113
+Tanzania,Dodoma,834001
+Tanzania,"Arusha, Manyara",834002
+Tanzania,Kilimanjaro,834003
+Tanzania,Tanga,834004
+Tanzania,Morogoro,834005
+Tanzania,Pwani,834006
+Tanzania,Dar es Salaam,834007
+Tanzania,Lindi,834008
+Tanzania,Mtwara,834009
+Tanzania,Ruvuma,834010
+Tanzania,"Iringa, Njombe",834011
+Tanzania,Mbeya,834012
+Tanzania,Singida,834013
+Tanzania,Tabora,834014
+Tanzania,"Katavi, Rukwa",834015
+Tanzania,Kigoma,834016
+Tanzania,"Geita, Kagera, Mwanza, Shinyanga, Simiyu",834019
+Tanzania,Mara,834020
+Tanzania,Zanzibar North,834051
+Tanzania,Zanzibar South,834052
+Tanzania,Zanzibar Town/West,834053
+Tanzania,Pemba North,834054
+Tanzania,Pemba South,834055
+Tanzania,Waterbody,834888
+United States,Alabama,840001
+United States,Alaska,840002
+United States,Arizona,840004
+United States,Arkansas,840005
+United States,California,840006
+United States,Colorado,840008
+United States,Connecticut,840009
+United States,Delaware,840010
+United States,District of Columbia,840011
+United States,Florida,840012
+United States,Georgia,840013
+United States,Hawaii,840015
+United States,Idaho,840016
+United States,Illinois,840017
+United States,Indiana,840018
+United States,Iowa,840019
+United States,Kansas,840020
+United States,Kentucky,840021
+United States,Louisiana,840022
+United States,Maine,840023
+United States,Maryland,840024
+United States,Massachusetts,840025
+United States,Michigan,840026
+United States,Minnesota,840027
+United States,Mississippi,840028
+United States,Missouri,840029
+United States,Montana,840030
+United States,Nebraska,840031
+United States,Nevada,840032
+United States,New Hampshire,840033
+United States,New Jersey,840034
+United States,New Mexico,840035
+United States,New York,840036
+United States,North Carolina,840037
+United States,North Dakota,840038
+United States,Ohio,840039
+United States,Oklahoma,840040
+United States,Oregon,840041
+United States,Pennsylvania,840042
+United States,Rhode Island,840044
+United States,South Carolina,840045
+United States,South Dakota,840046
+United States,Tennessee,840047
+United States,Texas,840048
+United States,Utah,840049
+United States,Vermont,840050
+United States,Virginia,840051
+United States,Washington,840053
+United States,West Virginia,840054
+United States,Wisconsin,840055
+United States,Wyoming,840056
+United States,State not identified,840099
+United States,Great Lakes,840888
+Burkina Faso,Boucle du Mouhoun,854001
+Burkina Faso,Cascades,854002
+Burkina Faso,Centre,854003
+Burkina Faso,Centre-Est,854004
+Burkina Faso,Centre-Nord,854005
+Burkina Faso,Centre-Ouest,854006
+Burkina Faso,Centre-Sud,854007
+Burkina Faso,Est,854008
+Burkina Faso,Hauts-Bassins,854009
+Burkina Faso,Nord,854010
+Burkina Faso,Plateau Central,854011
+Burkina Faso,Sahel,854012
+Burkina Faso,Sud-Ouest,854013
+Uruguay,Montevideo,858001
+Uruguay,Artigas,858002
+Uruguay,Canelones,858003
+Uruguay,Cerro Largo,858004
+Uruguay,Colonia,858005
+Uruguay,Durazno,858006
+Uruguay,Flores,858007
+Uruguay,Florida,858008
+Uruguay,Lavalleja,858009
+Uruguay,Maldonado,858010
+Uruguay,Paysandú,858011
+Uruguay,Río Negro,858012
+Uruguay,Rivera,858013
+Uruguay,Rocha,858014
+Uruguay,Salto,858015
+Uruguay,San José,858016
+Uruguay,Soriano,858017
+Uruguay,Tacuarembó,858018
+Uruguay,Treinta Y Tres,858019
+Uruguay,Unknown,858999
+Venezuela,"Federal District, Vargas",862001
+Venezuela,Amazonas Federal Territory,862002
+Venezuela,Anzoátegui,862003
+Venezuela,Apure,862004
+Venezuela,Aragua,862005
+Venezuela,Bolívar,862007
+Venezuela,Carabobo,862008
+Venezuela,Cojedes,862009
+Venezuela,Amacuros Delta Federal Territory,862010
+Venezuela,Falcón,862011
+Venezuela,Guárico,862012
+Venezuela,Lara,862013
+Venezuela,"Barinas, Mérida",862014
+Venezuela,Miranda,862015
+Venezuela,Monagas,862016
+Venezuela,"Nueva Esparta, Federal Dependencies",862017
+Venezuela,Portuguesa,862018
+Venezuela,Sucre,862019
+Venezuela,Táchira,862020
+Venezuela,Trujillo,862021
+Venezuela,Yaracuy,862022
+Venezuela,Zulia,862023
+Armenia,Lake Sevan,888888
+Canada,Great Lakes,888888
+Iran,Lake Urmia,888888
+Jordan,Waterbody,888888
+Kenya,Waterbodies,888888
+Panama,Waterbody,888888
+Turkey,Waterbody,888888
+Venezuela,Lake Valencia,888888
+Zambia,Central,894001
+Zambia,Copperbelt,894002
+Zambia,"Eastern, Muchinga, Northern",894003
+Zambia,Luapula,894004
+Zambia,Lusaka,894005
+Zambia,North Western,894008
+Zambia,Southern,894009
+Zambia,Western,894010

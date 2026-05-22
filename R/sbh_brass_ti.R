@@ -1,13 +1,40 @@
-#' Compute t(i) for calculated q(x)'s from the Brass (Trussell Variant) method using SBH information
+#' Compute t(i) for calculated q(x)'s
 #'
-#' @param region_dataframe a dataframe for a single region/area with SBH information for 5.yr age bands & both sexes from 15-19 up to 45-49, and a corresponding index column (i) for the age groups... columns should be named: region, i, num_women, total_both, dead_both. all less region should be numeric. the dataframe should be 7 rows.
-#' @param i_brass i corresponding to the q(x) of interest for the reference year. for example, i = 1 (ages 15-19) corresponds to x = 1, i = 2 (ages 15-19) corresponds to x = 2, etc. - this should be a single integer ranging from 1-7 (inclusive).
-#' @param family string representing family of Coale-Demeny life tables to be used (options: East, West, North, South).
+#' This function takes q(x)'s calculated from the Brass (Trussell Variant) method and Coale_demeny life tables to generate a reference year for a specific q(x) based on the census year.
+#' for more information on the formula, refer to the demo vignette.
+#'
+#' @param region_dataframe a dataframe for a single region/area with SBH information for 5.yr age bands & both sexes from 15-19 up to 45-49, and a corresponding index column (i) for the age groups...
+#' columns should be named exactly: region, i, num_women, total_both, dead_both. all less region should be numeric. the dataframe should be 7 rows.
+#'
+#' @param i_brass i corresponding to the q(x) of interest for the reference year. for example, i = 1 (ages 15-19) corresponds to x = 1, i = 2 (ages 15-19) corresponds to x = 2, etc.
+#' this should be a single integer ranging from 1-7 (inclusive).
+#'
+#' @param family string representing family of Coale-Demeny life tables to be used (options: East, West, North, South - case sensitive)
 #' @param census_year single integer representing the year of the census being used
 #'
 #' @returns the reference year for a given i corresponding to the q(x) of interest
+#'
+#' @examples
+#' # Example SBH data
+#' sbh_example <- data.frame(
+#'   region = rep("ExampleRegion", 7),
+#'   i = 1:7,
+#'   num_women = c(100, 110, 120, 130, 120, 100, 90),
+#'   total_both = c(20, 80, 150, 220, 260, 240, 180),
+#'   dead_both = c(2, 5, 9, 14, 18, 20, 17)
+#' )
+#'
+#' # Compute reference time t(i) for i = 2
+#' sbh_brass_ti(
+#'   region_dataframe = sbh_example,
+#'   i_brass = 2,
+#'   family = "West",
+#'   census_year = 2020
+#' )
+#'
 #' @export
 sbh_brass_ti <- function(region_dataframe, i_brass, family, census_year) {
+  #perform checks to make sure inputs are as expected...
   stopifnot(
     is.data.frame(region_dataframe),
     all(c("region", "num_women", "total_both", "dead_both", "i") %in%
@@ -35,6 +62,7 @@ sbh_brass_ti <- function(region_dataframe, i_brass, family, census_year) {
     census_year <= 9999
   )
 
+  #set coefficeints to be used and then map them to the proper ones based on the family and the i/age group
   a <- b <- c <- NULL
   if (family == "North") {
     if (i_brass == 1)      { a <- 1.0921; b <- 5.4732; c <- -1.9672}
@@ -77,14 +105,15 @@ sbh_brass_ti <- function(region_dataframe, i_brass, family, census_year) {
   }
 
   #calculate parity for i = 1,2,3
-  p1 <- region_dataframe %>% filter(i == 1) %>% mutate(p1 = total_both / num_women) %>% pull(p1)
-  p2 <- region_dataframe %>% filter(i == 2) %>% mutate(p2 = total_both / num_women) %>% pull(p2)
-  p3 <- region_dataframe %>% filter(i == 3) %>% mutate(p3 = total_both / num_women) %>% pull(p3)
+  p1 <- region_dataframe |> dplyr::filter(i == 1) |> dplyr::mutate(p1 = total_both / num_women) |> dplyr::pull(p1)
+  p2 <- region_dataframe |> dplyr::filter(i == 2) |> dplyr::mutate(p2 = total_both / num_women) |> dplyr::pull(p2)
+  p3 <- region_dataframe |> dplyr::filter(i == 3) |> dplyr::mutate(p3 = total_both / num_women) |> dplyr::pull(p3)
 
   #get components sorted
   pi1_2 <- p1/p2
   pi2_3 <- p2/p3
 
+  #return final census year formula result
   ti <- (a + b*pi1_2 + c*pi2_3)
   ref_year <- census_year - ti
   return(ref_year)

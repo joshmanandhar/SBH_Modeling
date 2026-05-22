@@ -1,13 +1,37 @@
-#' Compute q(x) via Brass (Trussell Variant) method using SBH information
+#' Compute q(x) using SBH information
 #'
-#' @param district_dataframe a dataframe for a single region/area with SBH information for 5.yr age bands & both sexes from 15-19 up to 45-49, and a corresponding index column (i) for the age groups... columns should be named: region, i, num_women, total_both, dead_both. all less region should be numeric. the dataframe should be 7 rows.
+#' This function uses the Trussell Variant of the Brass method with Coale_Demeny life tables to compute the mortality rate / prob. of dying up to age = x.
+#' for more information on the formula, refer to the demo vignette.
 #'
-#' @param i_brass i corresponding to the q(x) being calculated. for example, i = 1 (ages 15-19) corresponds to x = 1, i = 2 (ages 15-19) corresponds to x = 2, etc. - this should be a single integer ranging from 1-7 (inclusive).
-#' @param family string representing family of Coale-Demeny life tables to be used (options: East, West, North, South).
+#' @param region_dataframe a dataframe for a single region/area with SBH information for 5.yr age bands & both sexes from 15-19 up to 45-49, and a corresponding index column (i) for the age groups...
+#' columns should be named exactly: region, i, num_women, total_both, dead_both. all less region should be numeric. the dataframe should be 7 rows.
 #'
-#' @returns the region name from the dataframe, the computed q(x), and the multiplier k(x) from the associated formula
+#' @param i_brass i corresponding to the q(x) being calculated. for example, i = 1 (ages 15-19) corresponds to x = 1, i = 2 (ages 15-19) corresponds to x = 2, etc.
+#' this should be a single integer ranging from 1-7 (inclusive).
+#' @param family string representing family of Coale-Demeny life tables to be used (options: East, West, North, South - case sensitive)
+#'
+#' @returns a list w. the region name from the dataframe, the computed q(x), and the multiplier k(x) from the associated formula
+#'
+#' @examples
+#' # Example SBH data
+#' sbh_example <- data.frame(
+#'   region = rep("ExampleRegion", 7),
+#'   i = 1:7,
+#'   num_women = c(100, 110, 120, 130, 120, 100, 90),
+#'   total_both = c(20, 80, 150, 220, 260, 240, 180),
+#'   dead_both = c(2, 5, 9, 14, 18, 20, 17)
+#' )
+#'
+#' # Compute q(x) for i = 2 using West model life tables
+#' sbh_brass_qx(
+#'   region_dataframe = sbh_example,
+#'   i_brass = 2,
+#'   family = "West"
+#' )
+#'
 #' @export
 sbh_brass_qx <- function(region_dataframe, i_brass, family) {
+  #set checks for inputs as expected
   stopifnot(
     is.data.frame(region_dataframe),
     all(c("region", "num_women", "total_both", "dead_both", "i") %in%
@@ -28,6 +52,7 @@ sbh_brass_qx <- function(region_dataframe, i_brass, family) {
     length(family) == 1,
     family %in% c("West", "North", "East", "South")
   )
+
   #set coefficeints to be used and then map them to the proper ones based on the family and the i/age group
   a <- b <- c <- NULL
   if (family == "North") {
@@ -68,19 +93,19 @@ sbh_brass_qx <- function(region_dataframe, i_brass, family) {
     stop("Missing coefficients: check family or i_brass input.")
   }
 
-  #calculate parity for i = 1,2,3 as neceesary for the formula
-  p1 <- region_dataframe %>% filter(i == 1) %>% mutate(p1 = total_both / num_women) %>% pull(p1)
-  p2 <- region_dataframe %>% filter(i == 2) %>% mutate(p2 = total_both / num_women) %>% pull(p2)
-  p3 <- region_dataframe %>% filter(i == 3) %>% mutate(p3 = total_both / num_women) %>% pull(p3)
+  #calculate parity for i = 1,2,3 as necessary for the formula
+  p1 <- region_dataframe |> dplyr::filter(i == 1) |> dplyr::mutate(p1 = total_both / num_women) |> dplyr::pull(p1)
+  p2 <- region_dataframe |> dplyr::filter(i == 2) |> dplyr::mutate(p2 = total_both / num_women) |> dplyr::pull(p2)
+  p3 <- region_dataframe |> dplyr::filter(i == 3) |> dplyr::mutate(p3 = total_both / num_women) |> dplyr::pull(p3)
 
   #calculate d(i) for specified i
-  di <- region_dataframe %>% filter(i == i_brass) %>% mutate(d_i = dead_both / total_both) %>% pull(d_i)
+  di <- region_dataframe |> dplyr::filter(i == i_brass) |> dplyr::mutate(d_i = dead_both / total_both) |> dplyr::pull(d_i)
 
-  #get components sorted
+  #get components sorted for the final formula
   pi1_2 <- p1/p2
   pi2_3 <- p2/p3
 
-  #final formuala
+  #final formula computation + return
   ki <- (a + b*pi1_2 + c*pi2_3)
   qi <- ki * di
   return(list('region' = region_dataframe$region[[1]],
