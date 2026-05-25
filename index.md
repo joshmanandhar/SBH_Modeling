@@ -9,7 +9,8 @@ supervision of Prof. Jon Wakefield for Josh Manandhar’s work.
 
 - The URL to the GitHub (i.e., the source code) is:
   <https://github.com/joshmanandhar/SBH_Modeling>
-- The URL to the Pkgdown webpage is: (being updated soon)
+- The URL to the Pkgdown webpage is:
+  (<https://joshmanandhar.github.io/SBH_Modeling>)
 
 # How to install
 
