@@ -4,9 +4,10 @@
 # Purpose
 
 This is a package created to work on obtaining mortality rate estimates
-(and eventually uncertainty as well) from Summary Birth History data to
-be used in small area estimation as covariates. This is under the
-supervision of Prof. Jon Wakefield for Josh Manandhar’s work.
+and uncertainty from summary birth history (SBH) data to be used in
+small area estimation (SAE) as area-level covariates (i.e. for the
+Fay-Herriot model). This is under the supervision of Prof. Jon Wakefield
+for Josh Manandhar’s independent study work.
 
 - The URL to the GitHub (i.e., the source code) is:
   <https://github.com/joshmanandhar/SBH_Modeling>
