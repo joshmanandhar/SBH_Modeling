@@ -11,12 +11,14 @@ knitr::opts_chunk$set(
 )
 ```
 
+# SBHModeling <img src="man/figures/logo.png" align="right" height="120" alt="" />
+
 # Purpose
 
 This is a package created to work on obtaining mortality rate estimates (and eventually uncertainty as well) from Summary Birth History data to be used in small area estimation as covariates. This is under the supervision of Prof. Jon Wakefield for Josh Manandhar's work.
 
 - The URL to the GitHub (i.e., the source code) is: https://github.com/joshmanandhar/SBH_Modeling
-- The URL to the Pkgdown webpage is: (being updated soon)
+- The URL to the Pkgdown webpage is: (https://joshmanandhar.github.io/SBH_Modeling/)
 
 # How to install
 

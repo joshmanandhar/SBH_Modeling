@@ -1,4 +1,6 @@
 
+# SBHModeling <img src="man/figures/logo.png" align="right" height="120" alt="" />
+
 # Purpose
 
 This is a package created to work on obtaining mortality rate estimates
