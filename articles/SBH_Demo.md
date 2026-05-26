@@ -32,12 +32,13 @@ library(patchwork)
 
 This vignette aims to demonstrate functions in this package using the
 deterministic Brass approach to take SBH data and obtain mortality rate
-estimates for different ages (i.e. under-1 mortality… under-5 mortality
-.. etc.), reconstruct mortality rate histories for a given age, and also
-implement the results as covariates in SAE (Small Area Estimation)
-models.
+estimates (i.e. the probability of dying before a given age) for
+different ages (i.e. under-1 mortality… under-5 mortality .. etc.),
+reconstruct mortality rate histories for a specified age through
+interpolation, and also implement the results as covariates in SAE
+(Small Area Estimation) models.
 
-Specifically, we use SBH data on women aged from 15-49, with entries
+Specifically, we utilize SBH data on women aged from 15-49, with entries
 split into 5 year age bands (15-19, 20-24, … , 45-49) to create a
 measure of mortality - q(x) - the probability that a child dies before
 age x. We index age bands as i = 1,2,3,4,5,6,7 for ease. We primarily
@@ -51,26 +52,29 @@ considered. Furthermore, functions are currently written to specifically
 imply dataframes having entries (column names) for both sexes.
 
 In this notebook, as an example we take information from the 2018 Malawi
-Population and Housing Census’ fertility tables (data down to the
-admin-1 level) as a test case. Users should be able to replicate the
-code as the data file is included in the package. In terms of SAE, we
-are generally interested in nmr though this will come up in later in the
-vignette. We start by looking at Malawi as a whole without admin-1
+Population and Housing Census’ fertility tables (holding data down to
+the admin-1 level) as a test case. Users should be able to replicate the
+code below as the data file is included in the package. In terms of SAE,
+we are generally interested in nmr though this will come up in later
+vignettes. We start by looking at Malawi as a whole without admin-1
 granularity to demonstrate function usage. Note that the process of
 cleaning the data to make it usable will depend on the structure of the
 raw data itself, so the first section below is not necessarily
-generalized to all sources…
+generalized to all sources. In future cases we may be interested in
+using sources with more predictable structure like the census data
+available on IPUMS.
 
 ### Data Import:
 
 We take the data with the raw SBH information and convert it into a
 readable dataframe. Each district has several rows for SBH information
-corresponding to a specific age group.
+corresponding to a specific age group. The data below is available in
+the package itself and thus the code can be copied as is.
 
 ``` r
 
 path <- system.file("extdata", "MalawiSBH1.xlsx", package = "SBHModeling")
-#skip 4 since these rows correspond to just ugly nested headers
+#skip 4 since these rows correspond to nested headers
 df <- readxl::read_excel(path, sheet = "Table B1", skip = 4, col_names = FALSE)
 
 #rename columns to reflect original excel names...
@@ -123,7 +127,8 @@ As we are only interested in age groups 15-19 up until 45-49, we filter
 out the other age groups and create an index column, i, ranging from 1:7
 for each of the age groups, along with select Malawi as a whole for the
 region. Thus, it should be noted that after selecting the proper age
-groups, any given region’s information should span 7 rows.
+groups, any given region’s information should span 7 rows (assuming
+complete information available).
 
 ``` r
 
@@ -201,9 +206,10 @@ column named i corresponding to the age groups.
 being computed  
 - The family for the life tables being used (‘North’, ‘West’, ‘East’,
 ‘South’)  
-The reason for using a (region’s) dataframe opposed to a single row for
-computing a single q(x) is that the equation requires computing parity
-for several age groups.
+One can also refer to the reference page for documentation. The reason
+for using a (region’s) dataframe opposed to a single row for computing a
+single q(x) is that the equation requires computing parity for several
+age groups.
 
 The returns will then be the region name, the q(x), and k(x), which is
 essentially the multiplier of D(i) above, or in other words, the portion
@@ -316,8 +322,9 @@ then find the q(y) value for that row. Generally, we use linear
 interpolation in practice to interpolate between the mortality levels in
 the tables.
 
-As defined in (Wilson, Wakefield), Specifically, letting j = the level
-and qe(x) being the estimated q(x),  
+As defined in (Wilson, Wakefield),  
+Specifically, letting j = the level and qe(x) being the estimated
+q(x),  
 q_j+1(x) \< q_e(x) + q_j(x)
 
 Then, q(y) = (1-h)q_j(y) + hq_j+1(y)  
@@ -350,7 +357,8 @@ function, as all the column names will precisely match (which is indeed
 required for usage). Similarly, the family is just the same family
 you’ve been using throughout, and the input y should be a single integer
 that can be in the set {1,2,3,5,10,15,20}, which just specifies what
-historical mortality rates you are interested in obtaining.
+historical mortality rates you are interested in obtaining. For more
+information on the inputs, one can view the reference page.
 
 ``` r
 
@@ -369,9 +377,8 @@ malawi_q5
 #> 7 Malawi 0.127  0.999     7    20    2003. 0.100
 ```
 
-How cool… it worked!!! (???) We can also plot the results (both as the
-mortality rate raw and deaths per 1,000 live births, which is frequently
-displayed)
+We can also plot the results (both as the mortality rate raw and deaths
+per 1,000 live births, which is frequently displayed)
 
 ``` r
 
@@ -407,7 +414,8 @@ and time-series at finer geographic granularity. More importantly, the
 goal of obtaining these estimates is to use them as covariates in SAE
 methods - specifically the Fay-Herriot model. For nmr especially, using
 SBH information can be of great interest given the possibility for
-different (estimated) mortality rates to be highly correlated.
+different (estimated) mortality rates to be highly correlated with the
+outcome and thus increase precision of model estimates.
 
 As an example of how one might obtain covariates for mortality rate
 estimates at a given level (i.e. q(1) since this is the closest we have
@@ -423,8 +431,7 @@ the areas are admin1 areas (and/or fractions of them).
 df_ad1 <- df %>% filter(!(region %in% c('Malawi', 'Northern Region', 'Central Region', 'Southern Region')))
 
 districts <- unique(df_ad1$region)
-q1s_west <- vector('list', length(unique(df_ad1$district)))
-#> Warning: Unknown or uninitialised column: `district`.
+q1s_west <- vector('list', length(unique(df_ad1$region)))
 
 q1s_west <- lapply(districts, function(dist) {
   dist_df <- df_ad1 %>% dplyr::filter(region == dist)
@@ -472,4 +479,4 @@ data.frame(district = districts,
 We do stress that estimates using this deterministic method ARE NOT
 perfect and we don’t expect them to be - we just intend on using them as
 auxiliary information in other models. We will cover using these in SAE
-models in a different vignette. THANKS FOR VIEWING. All glory to nature…
+models in a different vignette. THANKS FOR VIEWING.

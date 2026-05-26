@@ -98,13 +98,14 @@ use in SAE models…<a class="anchor" aria-label="anchor" href="#demonstration-o
 </h2>
 <p>This vignette aims to demonstrate functions in this package using the
 deterministic Brass approach to take SBH data and obtain mortality rate
-estimates for different ages (i.e. under-1 mortality… under-5 mortality
-.. etc.), reconstruct mortality rate histories for a given age, and also
-implement the results as covariates in SAE (Small Area Estimation)
-models.</p>
-<p>Specifically, we use SBH data on women aged from 15-49, with entries
-split into 5 year age bands (15-19, 20-24, … , 45-49) to create a
-measure of mortality - q(x) - the probability that a child dies before
+estimates (i.e. the probability of dying before a given age) for
+different ages (i.e. under-1 mortality… under-5 mortality .. etc.),
+reconstruct mortality rate histories for a specified age through
+interpolation, and also implement the results as covariates in SAE
+(Small Area Estimation) models.</p>
+<p>Specifically, we utilize SBH data on women aged from 15-49, with
+entries split into 5 year age bands (15-19, 20-24, … , 45-49) to create
+a measure of mortality - q(x) - the probability that a child dies before
 age x. We index age bands as i = 1,2,3,4,5,6,7 for ease. We primarily
 consider SBH information for BOTH female and male children combined,
 rather than analyze by-sex information independently. If the latter was
@@ -115,24 +116,27 @@ tables are dependent on whether male, female, or both children are being
 considered. Furthermore, functions are currently written to specifically
 imply dataframes having entries (column names) for both sexes.</p>
 <p>In this notebook, as an example we take information from the 2018
-Malawi Population and Housing Census’ fertility tables (data down to the
-admin-1 level) as a test case. Users should be able to replicate the
-code as the data file is included in the package. In terms of SAE, we
-are generally interested in nmr though this will come up in later in the
-vignette. We start by looking at Malawi as a whole without admin-1
-granularity to demonstrate function usage. Note that the process of
-cleaning the data to make it usable will depend on the structure of the
-raw data itself, so the first section below is not necessarily
-generalized to all sources…</p>
+Malawi Population and Housing Census’ fertility tables (holding data
+down to the admin-1 level) as a test case. Users should be able to
+replicate the code below as the data file is included in the package. In
+terms of SAE, we are generally interested in nmr though this will come
+up in later vignettes. We start by looking at Malawi as a whole without
+admin-1 granularity to demonstrate function usage. Note that the process
+of cleaning the data to make it usable will depend on the structure of
+the raw data itself, so the first section below is not necessarily
+generalized to all sources. In future cases we may be interested in
+using sources with more predictable structure like the census data
+available on IPUMS.</p>
 <div class="section level3">
 <h3 id="data-import">Data Import:<a class="anchor" aria-label="anchor" href="#data-import"></a>
 </h3>
 <p>We take the data with the raw SBH information and convert it into a
 readable dataframe. Each district has several rows for SBH information
-corresponding to a specific age group.</p>
+corresponding to a specific age group. The data below is available in
+the package itself and thus the code can be copied as is.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"MalawiSBH1.xlsx"</span>, package <span class="op">=</span> <span class="st">"SBHModeling"</span><span class="op">)</span></span>
-<span><span class="co">#skip 4 since these rows correspond to just ugly nested headers</span></span>
+<span><span class="co">#skip 4 since these rows correspond to nested headers</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html" class="external-link">read_excel</a></span><span class="op">(</span><span class="va">path</span>, sheet <span class="op">=</span> <span class="st">"Table B1"</span>, skip <span class="op">=</span> <span class="fl">4</span>, col_names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#rename columns to reflect original excel names...</span></span>
@@ -183,7 +187,8 @@ corresponding to a specific age group.</p>
 filter out the other age groups and create an index column, i, ranging
 from 1:7 for each of the age groups, along with select Malawi as a whole
 for the region. Thus, it should be noted that after selecting the proper
-age groups, any given region’s information should span 7 rows.</p>
+age groups, any given region’s information should span 7 rows (assuming
+complete information available).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span></span>
 <span>  <span class="va">age_group</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -253,9 +258,10 @@ column named i corresponding to the age groups.<br>
 being computed<br>
 - The family for the life tables being used (‘North’, ‘West’, ‘East’,
 ‘South’)<br>
-The reason for using a (region’s) dataframe opposed to a single row for
-computing a single q(x) is that the equation requires computing parity
-for several age groups.</p>
+One can also refer to the reference page for documentation. The reason
+for using a (region’s) dataframe opposed to a single row for computing a
+single q(x) is that the equation requires computing parity for several
+age groups.</p>
 <p>The returns will then be the region name, the q(x), and k(x), which
 is essentially the multiplier of D(i) above, or in other words, the
 portion of the equation : {a(i) + b(i)[P(1)/P(2)] + c(i)[P(2)/P(3)]}</p>
@@ -354,8 +360,9 @@ in the life table and find the value closest to our estimated value, and
 then find the q(y) value for that row. Generally, we use linear
 interpolation in practice to interpolate between the mortality levels in
 the tables.</p>
-<p>As defined in (Wilson, Wakefield), Specifically, letting j = the
-level and qe(x) being the estimated q(x),<br>
+<p>As defined in (Wilson, Wakefield),<br>
+Specifically, letting j = the level and qe(x) being the estimated
+q(x),<br>
 q_j+1(x) &lt; q_e(x) + q_j(x)</p>
 <p>Then, q(y) = (1-h)q_j(y) + hq_j+1(y)<br>
 and h = [q_e(x) - q_j(x)]/[q_j+1(x) - q_j(x)]</p>
@@ -385,7 +392,8 @@ interpolation function, as all the column names will precisely match
 same family you’ve been using throughout, and the input y should be a
 single integer that can be in the set {1,2,3,5,10,15,20}, which just
 specifies what historical mortality rates you are interested in
-obtaining.</p>
+obtaining. For more information on the inputs, one can view the
+reference page.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">malawi_q5</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sbh_interpolation_complete.html">sbh_interpolation_complete</a></span><span class="op">(</span><span class="va">malawi_results</span>, <span class="st">'West'</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">malawi_q5</span></span>
@@ -400,9 +408,8 @@ obtaining.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Malawi 0.068<span style="text-decoration: underline;">9</span> 1.02      5    10    <span style="text-decoration: underline;">2</span>009. 0.063<span style="text-decoration: underline;">2</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Malawi 0.096<span style="text-decoration: underline;">6</span> 1.01      6    15    <span style="text-decoration: underline;">2</span>006. 0.083<span style="text-decoration: underline;">1</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> Malawi 0.127  0.999     7    20    <span style="text-decoration: underline;">2</span>003. 0.100</span></span></code></pre></div>
-<p>How cool… it worked!!! (???) We can also plot the results (both as
-the mortality rate raw and deaths per 1,000 live births, which is
-frequently displayed)</p>
+<p>We can also plot the results (both as the mortality rate raw and
+deaths per 1,000 live births, which is frequently displayed)</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">malawi_q5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>ref_year_rd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ref_year</span><span class="op">)</span>,</span>
 <span>                       u5mr_per_1000 <span class="op">=</span> <span class="va">q5_mr</span> <span class="op">*</span> <span class="fl">1000</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
@@ -429,7 +436,8 @@ and time-series at finer geographic granularity. More importantly, the
 goal of obtaining these estimates is to use them as covariates in SAE
 methods - specifically the Fay-Herriot model. For nmr especially, using
 SBH information can be of great interest given the possibility for
-different (estimated) mortality rates to be highly correlated.</p>
+different (estimated) mortality rates to be highly correlated with the
+outcome and thus increase precision of model estimates.</p>
 <p>As an example of how one might obtain covariates for mortality rate
 estimates at a given level (i.e. q(1) since this is the closest we have
 to nmr), we show an example below with the data loaded in initially that
@@ -442,8 +450,7 @@ the areas are admin1 areas (and/or fractions of them).</p>
 <code class="sourceCode R"><span><span class="va">df_ad1</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">region</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Malawi'</span>, <span class="st">'Northern Region'</span>, <span class="st">'Central Region'</span>, <span class="st">'Southern Region'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">df_ad1</span><span class="op">$</span><span class="va">region</span><span class="op">)</span></span>
-<span><span class="va">q1s_west</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="st">'list'</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">df_ad1</span><span class="op">$</span><span class="va">district</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Unknown or uninitialised column: `district`.</span></span>
+<span><span class="va">q1s_west</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="st">'list'</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">df_ad1</span><span class="op">$</span><span class="va">region</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">q1s_west</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">districts</span>, <span class="kw">function</span><span class="op">(</span><span class="va">dist</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">dist_df</span> <span class="op">&lt;-</span> <span class="va">df_ad1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op">==</span> <span class="va">dist</span><span class="op">)</span></span>
@@ -489,8 +496,7 @@ the areas are admin1 areas (and/or fractions of them).</p>
 <p>We do stress that estimates using this deterministic method ARE NOT
 perfect and we don’t expect them to be - we just intend on using them as
 auxiliary information in other models. We will cover using these in SAE
-models in a different vignette. THANKS FOR VIEWING. All glory to
-nature…</p>
+models in a different vignette. THANKS FOR VIEWING.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
