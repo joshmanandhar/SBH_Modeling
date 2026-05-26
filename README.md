@@ -21,7 +21,7 @@ This package is called `SBHModeling`. To install, run the following code
 
 ``` r
 library(devtools)
-devtools::install_github("joshmanandhar/SBHModeling")
+devtools::install_github("joshmanandhar/SBH_Modeling")
 ```
 
 Upon completion, you can run the following code (in R):
