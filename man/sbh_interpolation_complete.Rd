@@ -2,25 +2,29 @@
 % Please edit documentation in R/sbh_interpolation_complete.R
 \name{sbh_interpolation_complete}
 \alias{sbh_interpolation_complete}
-\title{Conversion of q(x) estimates to a q(y) of interest}
+\title{Interpolation of q(x) estimates to a specific q(y) of interest}
 \usage{
 sbh_interpolation_complete(sbh_result_table, family, y)
 }
 \arguments{
-\item{sbh_result_table}{a table with previously estimated q(x)s and their reference years for all age groups/i for one specific region.
-columns should be named region, q_i, i, x, and ref_year exactly. dataframe should be 7 rows long.}
+\item{sbh_result_table}{A dataframe with previously constructed q(x) estimates and their reference years for all age groups (i's) for one specific region.
+This can be obtained by using the sbh_brass_qx and sbh_brass_ti functions. Refer to the example below or the SBH_Demo vignette to view the process for obtaining such from SBH information.
+Columns should be named region, q_i, i, x, and ref_year exactly, with all except region being numeric. The dataframe should be 7 rows long.}
 
-\item{family}{the family for the life death tables to be used (includes North, South, West, East - case sensitive)}
+\item{family}{A string field representing the family of Coale-Demeny life tables to be used (options: East, West, North, South - note this is case sensitive).}
 
-\item{y}{the under-y mortality rate of interest that all previous q(x)s will be mapped to.
-this is NOT the same as i. for example, for u5mr you. input y = 5 and not y = 4. similarly, for under-10 you just input y = 10, not y = 5.}
+\item{y}{The under-y mortality rate of interest that all previous q(x)s will be interpolated to.
+This is NOT the same as i. For example, for U5MR (Under-5 Mortality) one should input y = 5 and not y = 4. Similarly, for under-10 mortality, you just input y = 10 and not y = 5.
+Recall previously in the q(x) functions however, you would input the i that corresponds to such mortality age.}
 }
 \value{
-the sbh_result_table is returned with a new appended column representing the interpolated mortality rates.
+The sbh_result_table itself is returned with a new appended column representing the interpolated mortality rates for the y of interest.
 }
 \description{
-This function takes q(x) estimates for a given x and uses Coale-Demeny life tables to convert it to a different q(y) of interest for that given reference year.
-for more information on the process, refer to the demo vignette.
+This function takes estimated q(x) values for a given region and uses linear interpolation through Coale-Demeny life tables to convert them all to a specific q(y) of interest (for their respective reference years).
+For example, if the q(x) estimates are obtained for a region and one is interested in reconstructing q(5) - U5MR over the reference years.
+The Coale-Demeny life tables can be found in the UN Guide to Estimation of Child Mortality, but are also embedded in the function for ease.
+For more information on the process and formulas, refer to the SBH_Demo vignette.
 }
 \examples{
 # Example SBH data

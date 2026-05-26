@@ -2,25 +2,25 @@
 % Please edit documentation in R/sbh_brass_qx.R
 \name{sbh_brass_qx}
 \alias{sbh_brass_qx}
-\title{Compute q(x) using SBH information}
+\title{Compute q(x) for a given age using summary birth history (SBH) information}
 \usage{
 sbh_brass_qx(region_dataframe, i_brass, family)
 }
 \arguments{
-\item{region_dataframe}{a dataframe for a single region/area with SBH information for 5.yr age bands & both sexes from 15-19 up to 45-49, and a corresponding index column (i) for the age groups...
-columns should be named exactly: region, i, num_women, total_both, dead_both. all less region should be numeric. the dataframe should be 7 rows.}
+\item{region_dataframe}{A dataframe for a single area (i.e. district) with SBH information for both sexes (of children) for women in 5-year age bands ranging 15-19 up to 45-49, and a corresponding index column (i) for the age groups.
+Columns should be named exactly: region, i, num_women, total_both (referring to Children Ever Born), dead_both (referring to Children Dead). All less region should be numeric. The dataframe should be 7 rows.}
 
-\item{i_brass}{i corresponding to the q(x) being calculated. for example, i = 1 (ages 15-19) corresponds to x = 1, i = 2 (ages 15-19) corresponds to x = 2, etc.
-this should be a single integer ranging from 1-7 (inclusive).}
+\item{i_brass}{'i' corresponding to the q(x) being calculated. For example, i = 1 (ages 15-19) corresponds to x = 1 in q(x), i = 2 (ages 15-19) corresponds to x = 2, etc.
+This should be a single integer ranging from 1-7 (inclusive).}
 
-\item{family}{string representing family of Coale-Demeny life tables to be used (options: East, West, North, South - case sensitive)}
+\item{family}{A string field representing the family of Coale-Demeny life tables to be used (options: East, West, North, South - note this is case sensitive).}
 }
 \value{
-a list w. the region name from the dataframe, the computed q(x), and the multiplier k(x) from the associated formula
+A list with the region name ($region) from the dataframe, the computed q(x) ($qx), and the multiplier k(x) ($kx) from the associated formula.
 }
 \description{
-This function uses the Trussell Variant of the Brass method with Coale_Demeny life tables to compute the mortality rate / prob. of dying up to age = x.
-for more information on the formula, refer to the demo vignette.
+This function uses the Trussell Variant of the Brass method with Coale-Demeny life tables to compute the probability of dying before age = x. The Coale-Demeny tables can be found in the UN Manual X: Indirect Techniques for Demographic Estimation.
+For ease, they are already embedded in the functions so the user only has to specify the family. For more information on the explicit formula, refer to the SBH_Demo vignette.
 }
 \examples{
 # Example SBH data
