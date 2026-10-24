@@ -11,3 +11,6 @@
   : Compute t(i), the reference year, for a calculated q(x)
 - [`sbh_interpolation_complete()`](https://joshmanandhar.github.io/SBH_Modeling/reference/sbh_interpolation_complete.md)
   : Interpolation of q(x) estimates to a specific q(y) of interest
+- [`sbh_logit_interpolation_complete()`](https://joshmanandhar.github.io/SBH_Modeling/reference/sbh_logit_interpolation_complete.md)
+  : Interpolation of q(x) estimates to a specific q(y) of interest using
+  the IUSSP method

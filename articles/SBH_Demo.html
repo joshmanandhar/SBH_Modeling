@@ -39,6 +39,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/SBH_Demo.html">SBH_Demo</a></li>
+    <li><a class="dropdown-item" href="../articles/SBH_IUSSP_Verification.html">SBH_IUSSP_Verification</a></li>
   </ul>
 </li>
       </ul>
@@ -103,6 +104,8 @@ different ages (i.e. under-1 mortality… under-5 mortality .. etc.),
 reconstruct mortality rate histories for a specified age through
 interpolation, and also implement the results as covariates in SAE
 (Small Area Estimation) models.</p>
+<p>A note: we use functions embedding Princeton/CD life tables - in
+later functions we will also include UN life tables.</p>
 <p>Specifically, we utilize SBH data on women aged from 15-49, with
 entries split into 5 year age bands (15-19, 20-24, … , 45-49) to create
 a measure of mortality - q(x) - the probability that a child dies before
@@ -299,8 +302,9 @@ period to which the values of q(x) estimated from data classified by age
 refer).</p>
 <p>The inputs for the function are about identical to the previous
 function, with the addition of the census year, which should be a single
-(4-digit) integer referring to the year that the census was
-executed.</p>
+(4-digit) number referring to the year that the census was executed.
+This number doesn’t need to be an integer. If, for example, we have a
+census taken in June 2005, we could input the number 2005.50.</p>
 <p>As an example, we compute t(5), or the reference period for U5MR,
 s.t. i = 4:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -344,10 +348,11 @@ obtain a dataframe like so:</p>
 <h3 id="reconstructing-historical-estimates-for-a-given-qx">Reconstructing historical estimates for a given q(x)<a class="anchor" aria-label="anchor" href="#reconstructing-historical-estimates-for-a-given-qx"></a>
 </h3>
 <p>As seen above, we now have the means of obtaining q(x) for i = 1:7
-for a given region, along with the reference year. What if instead of
-looking at q(x)’s corresponding to different mortality rates
-(i.e. under-1 mortality, under-5 mortality, etc.), we wanted to look at
-a single measure, i.e. U5MR, as a historical time series?</p>
+for a given region, along with the reference year. Instead of looking at
+q(x)’s corresponding to different mortality rates (i.e. under-1
+mortality, under-5 mortality, etc.), we can also look at a single
+measure, i.e. U5MR, as a historical time series based on the constructed
+estimates.</p>
 <p>We can do this through (Brass-Macrae Method) linear interpolation, by
 converting different q(x) measures to other q(y)s. For example, if we
 had a q(1) estimate and a reference year, we could convert that q(1) to
@@ -411,33 +416,120 @@ reference page.</p>
 <p>We can also plot the results (both as the mortality rate raw and
 deaths per 1,000 live births, which is frequently displayed)</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">malawi_q5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>ref_year_rd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ref_year</span><span class="op">)</span>,</span>
-<span>                       u5mr_per_1000 <span class="op">=</span> <span class="va">q5_mr</span> <span class="op">*</span> <span class="fl">1000</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ref_year_rd</span>, y <span class="op">=</span> <span class="va">u5mr_per_1000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">'skyblue'</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">'Under-5 Mortality Rate Over Time: Malawi (Deaths per 1,000 Live Births'</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">'Reference Year'</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">'(Interpolated) U5MR : Deaths Before Age 5 per 1,0000 Live Births)'</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">malawi_q5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    ref_year_rd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ref_year</span><span class="op">)</span>,</span>
+<span>    u5mr_per_1000 <span class="op">=</span> <span class="va">q5_mr</span> <span class="op">*</span> <span class="fl">1000</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ref_year_rd</span>, y <span class="op">=</span> <span class="va">u5mr_per_1000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"skyblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Under-5 Mortality Rate Over Time: Malawi"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Reference Year"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"U5MR (deaths per 1,000 live births)"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="SBH_Demo_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="700"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">malawi_q5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>ref_year_rd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ref_year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ref_year_rd</span>, y <span class="op">=</span> <span class="va">q5_mr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">'skyblue'</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">'Under-5 Mortality Rate Over Time: Malawi (Rate)'</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">'Reference Year'</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">'(Interpolated) U5MR Rate'</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">malawi_q5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>ref_year_rd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ref_year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ref_year_rd</span>, y <span class="op">=</span> <span class="va">q5_mr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"skyblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Under-5 Mortality Rate Over Time: Malawi"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Reference Year"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"U5MR (probability of dying before age 5)"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <p><img src="SBH_Demo_files/figure-html/unnamed-chunk-8-2.png" class="r-plt" alt="" width="700"></p>
-<p>So what is the point of all of this… for one it may be of interest to
-obtain different age-specific (national) mortality rate estimates over
-time to create time-series like that above, and then compare those to
-estimates from different sources (i.e. childmortality.org). But also
-recall that since we can take any specific district dataframe, if we
-have the data for sub-national areas we can also obtain these estimates
-and time-series at finer geographic granularity. More importantly, the
-goal of obtaining these estimates is to use them as covariates in SAE
-methods - specifically the Fay-Herriot model. For nmr especially, using
-SBH information can be of great interest given the possibility for
-different (estimated) mortality rates to be highly correlated with the
-outcome and thus increase precision of model estimates.</p>
+<p><br>
+## Reconstructing historical estimates for a given q(x) : IUSSP
+technique In addition to the described interpolation technique above for
+reconstructing estimates, there is another method that is outlined on
+IUSSP’s ‘Indirect estimation of child mortality’ page, outlined in
+detail. The same techniques are used for calculating qx and reference
+years, ti, but converting estimates to a single qx are slightly
+different. The process is briefly described here: - Take the estimated
+q(x) and convert it to the logit scale - Calculate the difference
+between this transformed value and the standard model life table’s logit
+for that same x/age - Carry this difference, or adjustment, over to the
+standard model life table’s lgoit for the age group of interest to map
+to (y) - Convert back to a probability by doing e^2(…) / (1 +
+e^2(…))</p>
+<p>The model life tables supply standard patterns of mortality for ages.
+In this use case, as is used in the IUSSP outline, we use the standard
+table values of combined sexes with expectation of life at birth of 60
+years. The tables provide lx and Lx for each age, but the IUSSP site
+also supplies the raw and standard logits of such values (specifically
+by taking 0.5 * ln((1-lx)/lx)). These are embedded in the function
+itself.</p>
+<p>We calculate and plot the mapping to q5mr once again below for the
+same Malawi census. For more information on the method, one can
+reference demographicestimation.iussp.org. In the ‘IUSSP Verification’
+vignette, we also use our package on an example census to illustrate our
+calculations matching up with those outlined on the website.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">malawi_q5_logit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sbh_logit_interpolation_complete.html">sbh_logit_interpolation_complete</a></span><span class="op">(</span><span class="va">malawi_results</span>, <span class="st">'West'</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">malawi_q5_logit</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 7</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Rowwise: </span></span></span>
+<span><span class="co">#&gt;   region    q_i   k_i     i     x ref_year  q5_mr</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Malawi 0.046<span style="text-decoration: underline;">5</span> 1.01      1     1    <span style="text-decoration: underline;">2</span>017. 0.065<span style="text-decoration: underline;">0</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Malawi 0.039<span style="text-decoration: underline;">2</span> 1.02      2     2    <span style="text-decoration: underline;">2</span>015. 0.046<span style="text-decoration: underline;">1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Malawi 0.038<span style="text-decoration: underline;">6</span> 0.985     3     3    <span style="text-decoration: underline;">2</span>013. 0.042<span style="text-decoration: underline;">1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Malawi 0.050<span style="text-decoration: underline;">5</span> 0.999     4     5    <span style="text-decoration: underline;">2</span>011. 0.050<span style="text-decoration: underline;">5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Malawi 0.068<span style="text-decoration: underline;">9</span> 1.02      5    10    <span style="text-decoration: underline;">2</span>009. 0.062<span style="text-decoration: underline;">8</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Malawi 0.096<span style="text-decoration: underline;">6</span> 1.01      6    15    <span style="text-decoration: underline;">2</span>006. 0.082<span style="text-decoration: underline;">7</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> Malawi 0.127  0.999     7    20    <span style="text-decoration: underline;">2</span>003. 0.100<span style="text-decoration: underline;">0</span></span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">malawi_q5_logit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    ref_year_rd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ref_year</span><span class="op">)</span>,</span>
+<span>    u5mr_per_1000 <span class="op">=</span> <span class="va">q5_mr</span> <span class="op">*</span> <span class="fl">1000</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ref_year_rd</span>, y <span class="op">=</span> <span class="va">u5mr_per_1000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"skyblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Under-5 Mortality Rate Over Time: Malawi"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Reference Year"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"U5MR (deaths per 1,000 live births)"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p><img src="SBH_Demo_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="700"></p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">malawi_q5_logit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>ref_year_rd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ref_year</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ref_year_rd</span>, y <span class="op">=</span> <span class="va">q5_mr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"skyblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Under-5 Mortality Rate Over Time: Malawi"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Reference Year"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"U5MR (probability of dying before age 5)"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p><img src="SBH_Demo_files/figure-html/unnamed-chunk-10-2.png" class="r-plt" alt="" width="700"></p>
+<p><br>
+From this example, we see generally similar results with the linear
+interpolation method.</p>
+</div>
+<div class="section level3">
+<h3 id="closing-remarks">Closing Remarks<a class="anchor" aria-label="anchor" href="#closing-remarks"></a>
+</h3>
+<p>One overarching goal of using these methods is to obtain different
+age-specific (national) mortality rate estimates over time to create
+time-series like that above, and then compare those to estimates from
+different sources (i.e. childmortality.org). But also recall that since
+we can take any specific district dataframe, if we have the data for
+sub-national areas we can also obtain these estimates and time-series at
+finer geographic granularity. More importantly, the goal of obtaining
+these estimates is to use them as covariates in SAE methods -
+specifically the Fay-Herriot model. For nmr especially, using SBH
+information can be of great interest given the possibility for different
+(estimated) mortality rates to be highly correlated with the outcome and
+thus increase precision of model estimates.</p>
 <p>As an example of how one might obtain covariates for mortality rate
 estimates at a given level (i.e. q(1) since this is the closest we have
 to nmr), we show an example below with the data loaded in initially that
@@ -446,7 +538,7 @@ corresponding to admin-1 granularity in the surveyPrev/SUMMER package.
 We filter out the national and northern/central/southern region entries
 since these are at a larger geographic level than admin-1. The rest of
 the areas are admin1 areas (and/or fractions of them).</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_ad1</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">region</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Malawi'</span>, <span class="st">'Northern Region'</span>, <span class="st">'Central Region'</span>, <span class="st">'Southern Region'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">districts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">df_ad1</span><span class="op">$</span><span class="va">region</span><span class="op">)</span></span>
@@ -496,7 +588,7 @@ the areas are admin1 areas (and/or fractions of them).</p>
 <p>We do stress that estimates using this deterministic method ARE NOT
 perfect and we don’t expect them to be - we just intend on using them as
 auxiliary information in other models. We will cover using these in SAE
-models in a different vignette. THANKS FOR VIEWING.</p>
+models in a different vignette.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -510,7 +602,7 @@ models in a different vignette. THANKS FOR VIEWING.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

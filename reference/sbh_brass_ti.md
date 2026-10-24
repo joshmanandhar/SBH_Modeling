@@ -42,7 +42,8 @@ sbh_brass_ti(region_dataframe, i_brass, family, census_year)
 
 - census_year:
 
-  A single integer representing the year of the census being analyzed.
+  A single number representing the year of the census being analyzed
+  (can be a decimal i.e. 2004.50)
 
 ## Value
 
