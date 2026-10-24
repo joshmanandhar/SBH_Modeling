@@ -15,7 +15,7 @@ This should be a single integer ranging from 1-7 (inclusive).}
 
 \item{family}{A string field representing the family of Coale-Demeny life tables to be used (options: East, West, North, South - note this is case sensitive).}
 
-\item{census_year}{A single integer representing the year of the census being analyzed.}
+\item{census_year}{A single number representing the year of the census being analyzed (can be a decimal i.e. 2004.50)}
 }
 \value{
 A single value representing the reference year for a given i corresponding to the q(x) of interest.

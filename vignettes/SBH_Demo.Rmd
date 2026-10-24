@@ -27,6 +27,8 @@ library(patchwork)
 # Demonstration on obtaining mortality rate estimates from SBH data to use in SAE models...
 This vignette aims to demonstrate functions in this package using the deterministic Brass approach to take SBH data and obtain mortality rate estimates (i.e. the probability of dying before a given age) for different ages (i.e. under-1 mortality... under-5 mortality .. etc.), reconstruct mortality rate histories for a specified age through interpolation, and also implement the results as covariates in SAE (Small Area Estimation) models. 
 
+A note: we use functions embedding Princeton/CD life tables - in later functions we will also include UN life tables.
+
 Specifically, we utilize SBH data on women aged from 15-49, with entries split into 5 year age bands (15-19, 20-24, ... , 45-49) to create a measure of mortality - q(x) - the probability that a child dies before age x. We index age bands as i = 1,2,3,4,5,6,7 for ease. We primarily consider SBH information for BOTH female and male children combined, rather than analyze by-sex information independently. If the latter was desired, methods for obtaining q(x)'s would be similar, but to reconstruct mortality rate histories for a given age via interpolation, other life-death tables would need to be imported and used, as such life tables are dependent on whether male, female, or both children are being considered. Furthermore, functions are currently written to specifically imply dataframes having entries (column names) for both sexes.   
 
 In this notebook, as an example we take information from the 2018 Malawi Population and Housing Census' fertility tables (holding data down to the admin-1 level) as a test case. Users should be able to replicate the code below as the data file is included in the package. In terms of SAE, we are generally interested in nmr though this will come up in later vignettes. We start by looking at Malawi as a whole without admin-1 granularity to demonstrate function usage. Note that the process of cleaning the data to make it usable will depend on the structure of the raw data itself, so the first section below is not necessarily generalized to all sources. In future cases we may be interested in using sources with more predictable structure like the census data available on IPUMS. 
@@ -132,7 +134,7 @@ and the final reference year can be taken by subtracting t(i) from the original 
 
 The e, f, and g coefficients similarly come from simulations of Coale-Demeny life tables. In this package, we use those in the same Manual X but in Table 48 (Coefficients for estimation of the reference period to which the values of q(x) estimated from data classified by age refer).
 
-The inputs for the function are about identical to the previous function, with the addition of the census year, which should be a single (4-digit) integer referring to the year that the census was executed.
+The inputs for the function are about identical to the previous function, with the addition of the census year, which should be a single (4-digit) number referring to the year that the census was executed. This number doesn't need to be an integer. If, for example, we have a census taken in June 2005, we could input the number 2005.50.
 
 As an example, we compute t(5), or the reference period for U5MR, s.t. i = 4:
 ```{r}
@@ -163,7 +165,7 @@ malawi_results
 ```
 
 ## Reconstructing historical estimates for a given q(x)
-As seen above, we now have the means of obtaining q(x) for i = 1:7 for a given region, along with the reference year. What if instead of looking at q(x)'s corresponding to different mortality rates (i.e. under-1 mortality, under-5 mortality, etc.), we wanted to look at a single measure, i.e. U5MR, as a historical time series?
+As seen above, we now have the means of obtaining q(x) for i = 1:7 for a given region, along with the reference year. Instead of looking at q(x)'s corresponding to different mortality rates (i.e. under-1 mortality, under-5 mortality, etc.), we can also look at a single measure, i.e. U5MR, as a historical time series based on the constructed estimates.
 
 We can do this through (Brass-Macrae Method) linear interpolation, by converting different q(x) measures to other q(y)s. For example, if we had a q(1) estimate and a reference year, we could convert that q(1) to q(5) to obtain the U5MR estimate for that year. The conversion is done again by utilizing Coale-Demeny tables (specific to families). Essentially, the life tables have information on 'mortality levels' and for each, the associated q(x)s. If we are interested in converting our estimated q(x) to q(y), we go down the column for the corresponding q(x) in the life table and find the value closest to our estimated value, and then find the q(y) value for that row. Generally, we use linear interpolation in practice to interpolate between the mortality levels in the tables.
 
@@ -189,21 +191,82 @@ malawi_q5
 ```
 We can also plot the results (both as the mortality rate raw and deaths per 1,000 live births, which is frequently displayed)
 ```{r}
-malawi_q5 %>% mutate(ref_year_rd = round(ref_year),
-                       u5mr_per_1000 = q5_mr * 1000) %>% ggplot(
-  aes(x = ref_year_rd, y = u5mr_per_1000)) + geom_line(color='skyblue') + geom_point(alpha=0.5) + labs(
-    title = 'Under-5 Mortality Rate Over Time: Malawi (Deaths per 1,000 Live Births',
-    x = 'Reference Year',
-    y = '(Interpolated) U5MR : Deaths Before Age 5 per 1,0000 Live Births)')
+malawi_q5 %>%
+  mutate(
+    ref_year_rd = round(ref_year),
+    u5mr_per_1000 = q5_mr * 1000
+  ) %>%
+  ggplot(aes(x = ref_year_rd, y = u5mr_per_1000)) +
+  geom_line(color = "skyblue") +
+  geom_point(alpha = 0.5) +
+  labs(
+    title = "Under-5 Mortality Rate Over Time: Malawi",
+    x = "Reference Year",
+    y = "U5MR (deaths per 1,000 live births)"
+  )
 
-malawi_q5 %>% mutate(ref_year_rd = round(ref_year)) %>% ggplot(
-  aes(x = ref_year_rd, y = q5_mr)) + geom_line(color='skyblue') + geom_point(alpha=0.5) + labs(
-    title = 'Under-5 Mortality Rate Over Time: Malawi (Rate)',
-    x = 'Reference Year',
-    y = '(Interpolated) U5MR Rate')
+malawi_q5 %>%
+  mutate(ref_year_rd = round(ref_year)) %>%
+  ggplot(aes(x = ref_year_rd, y = q5_mr)) +
+  geom_line(color = "skyblue") +
+  geom_point(alpha = 0.5) +
+  labs(
+    title = "Under-5 Mortality Rate Over Time: Malawi",
+    x = "Reference Year",
+    y = "U5MR (probability of dying before age 5)"
+  )
 ```
 
-So what is the point of all of this... for one it may be of interest to obtain different age-specific (national) mortality rate estimates over time to create time-series like that above, and then compare those to estimates from different sources (i.e. childmortality.org). But also recall that since we can take any specific district dataframe, if we have the data for sub-national areas we can also obtain these estimates and time-series at finer geographic granularity. More importantly, the goal of obtaining these estimates is to use them as covariates in SAE methods - specifically the Fay-Herriot model. For nmr especially, using SBH information can be of great interest given the possibility for different (estimated) mortality rates to be highly correlated with the outcome and thus increase precision of model estimates. 
+\
+## Reconstructing historical estimates for a given q(x) : IUSSP technique
+In addition to the described interpolation technique above for reconstructing estimates, there is another method that is outlined on IUSSP's 'Indirect estimation of child mortality' page, outlined in detail. The same techniques are used for calculating qx and reference years, ti, but converting estimates to a single qx are slightly different. The process is briefly described here:
+- Take the estimated q(x) and convert it to the logit scale
+- Calculate the difference between this transformed value and the standard model life table's logit for that same x/age
+- Carry this difference, or adjustment, over to the standard model life table's lgoit for the age group of interest to map to (y)
+- Convert back to a probability by doing e^2(...) / (1 + e^2(...))
+
+The model life tables supply standard patterns of mortality for ages. In this use case, as is used in the IUSSP outline, we use the standard table values of combined sexes with expectation of life at birth of 60 years. The tables provide lx and Lx for each age, but the IUSSP site also supplies the raw and  standard logits of such values (specifically by taking 0.5 * ln((1-lx)/lx)). These are embedded in the function itself. 
+
+We calculate and plot the mapping to q5mr once again below for the same Malawi census. For more information on the method, one can reference demographicestimation.iussp.org. In the 'IUSSP Verification' vignette, we also use our package on an example census to illustrate our calculations matching up with those outlined on the website.
+
+```{r}
+malawi_q5_logit <- sbh_logit_interpolation_complete(malawi_results, 'West', 5)
+malawi_q5_logit
+```
+
+```{r}
+malawi_q5_logit %>%
+  mutate(
+    ref_year_rd = round(ref_year),
+    u5mr_per_1000 = q5_mr * 1000
+  ) %>%
+  ggplot(aes(x = ref_year_rd, y = u5mr_per_1000)) +
+  geom_line(color = "skyblue") +
+  geom_point(alpha = 0.5) +
+  labs(
+    title = "Under-5 Mortality Rate Over Time: Malawi",
+    x = "Reference Year",
+    y = "U5MR (deaths per 1,000 live births)"
+  )
+
+malawi_q5_logit %>%
+  mutate(ref_year_rd = round(ref_year)) %>%
+  ggplot(aes(x = ref_year_rd, y = q5_mr)) +
+  geom_line(color = "skyblue") +
+  geom_point(alpha = 0.5) +
+  labs(
+    title = "Under-5 Mortality Rate Over Time: Malawi",
+    x = "Reference Year",
+    y = "U5MR (probability of dying before age 5)"
+  )
+```
+
+
+\
+From this example, we see generally similar results with the linear interpolation method.
+
+## Closing Remarks 
+One overarching goal of using these methods is to obtain different age-specific (national) mortality rate estimates over time to create time-series like that above, and then compare those to estimates from different sources (i.e. childmortality.org). But also recall that since we can take any specific district dataframe, if we have the data for sub-national areas we can also obtain these estimates and time-series at finer geographic granularity. More importantly, the goal of obtaining these estimates is to use them as covariates in SAE methods - specifically the Fay-Herriot model. For nmr especially, using SBH information can be of great interest given the possibility for different (estimated) mortality rates to be highly correlated with the outcome and thus increase precision of model estimates. 
 
 As an example of how one might obtain covariates for mortality rate estimates at a given level (i.e. q(1) since this is the closest we have to nmr), we show an example below with the data loaded in initially that doesn't contain just the national level, but also districts corresponding to admin-1 granularity in the surveyPrev/SUMMER package. We filter out the national and northern/central/southern region entries since these are at a larger geographic level than admin-1. The rest of the areas are admin1 areas (and/or fractions of them).
 
@@ -223,7 +286,7 @@ data.frame(district = districts,
            q1_w = unlist(q1s_west))
 ```
 
-We do stress that estimates using this deterministic method ARE NOT perfect and we don't expect them to be - we just intend on using them as auxiliary information in other models. We will cover using these in SAE models in a different vignette. THANKS FOR VIEWING.
+We do stress that estimates using this deterministic method ARE NOT perfect and we don't expect them to be - we just intend on using them as auxiliary information in other models. We will cover using these in SAE models in a different vignette.
 
 
 

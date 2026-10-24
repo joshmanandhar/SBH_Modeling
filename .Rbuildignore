@@ -9,3 +9,4 @@
 ^pkgdown$
 ^\.github$
 ^LICENSE\.md$
+^vignettes/SBH_FH_Model\.Rmd$
