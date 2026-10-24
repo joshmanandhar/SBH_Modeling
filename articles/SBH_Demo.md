@@ -423,7 +423,7 @@ malawi_q5 %>%
 ![](SBH_Demo_files/figure-html/unnamed-chunk-8-2.png)
 
   
-\## Reconstructing historical estimates for a given q(x) : IUSSP
+\##Reconstructing historical estimates for a given q(x) : IUSSP
 technique In addition to the described interpolation technique above for
 reconstructing estimates, there is another method that is outlined on
 IUSSP’s ‘Indirect estimation of child mortality’ page, outlined in
