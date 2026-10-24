@@ -218,7 +218,7 @@ malawi_q5 %>%
 ```
 
 \
-## Reconstructing historical estimates for a given q(x) : IUSSP technique
+##Reconstructing historical estimates for a given q(x) : IUSSP technique
 In addition to the described interpolation technique above for reconstructing estimates, there is another method that is outlined on IUSSP's 'Indirect estimation of child mortality' page, outlined in detail. The same techniques are used for calculating qx and reference years, ti, but converting estimates to a single qx are slightly different. The process is briefly described here:
 - Take the estimated q(x) and convert it to the logit scale
 - Calculate the difference between this transformed value and the standard model life table's logit for that same x/age
